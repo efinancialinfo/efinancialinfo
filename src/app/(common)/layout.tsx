@@ -24,8 +24,7 @@ export default function RootLayout({
           <>
             <div className="min-h-screen grid grid-rows-[auto_1fr_auto] max-w-[100vw] overflow-hidden">
               <Navbar />
-              <div className="min-h-[60vh]">{children}</div>
-
+              {children}
               <Footer />
             </div>
             <ScrollToTopButton />

@@ -1,215 +1,143 @@
-"use client";
-import logo from "@/assets/logo/footerLogo.png";
-import { cn } from "@/lib/utils";
-import { Accordion, AccordionItem } from "@nextui-org/react";
-import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF } from "react-icons/fa6";
-import { IoLogoWhatsapp } from "react-icons/io5";
-import { MdMailOutline, MdOutlineCall } from "react-icons/md";
-import { PiBuildingOffice } from "react-icons/pi";
-import { RiHomeOfficeLine, RiLinkedinFill } from "react-icons/ri";
-import NavMenu from "../Navbar/NavMenu";
-import { usePathname } from "next/navigation";
+import logo from "@/assets/footer-logo.png";
+import Image from "next/image";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhone,
+} from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { IoLocationOutline } from "react-icons/io5";
 
-const thirdRow = [
-  {
-    title: "About Us",
-    link: "/about",
-  },
-  {
-    title: "Blog",
-    link: "/blogs",
-  },
-  {
-    title: "Reviews",
-    link: "/reviews",
-  },
-  // {
-  //   title: "Certification",
-  //   link: "/certification",
-  // },
-  {
-    title: "Careers",
-    link: "/career",
-  },
-  {
-    title: "Financing",
-    link: "/finance",
-  },
-  {
-    title: "Service Area",
-    link: "/service-area",
-  },
-];
-const forthRow = [
-  {
-    title: (
-      <a
-        href="https://www.google.com/maps/search/?api=1&query=16555+South+Oak+Park+Ave,+Tinley+Park,+IL+60477"
-        target="_blank"
-      >
-        16555 South Oak Park Ave, Tinley Park, IL 60477
-      </a>
-    ),
-    icon: <PiBuildingOffice />,
-  },
-  {
-    title: "8200 Beckett Park Dr West Chester Township OH 45069",
-    icon: <RiHomeOfficeLine />,
-  },
-
-  {
-    title: <a href="tel:708-949-4553">708-949-4553</a>,
-    icon: <MdOutlineCall />,
-  },
-  {
-    title: <a href="mailto:info@arcroofs.com">info@arcroofs.com</a>,
-    icon: <MdMailOutline />,
-  },
-];
-const Footer = () => {
-  const pathname = usePathname();
+export default function Footer() {
   return (
-    <div className="bg-[#1E2228] py-20">
-      <div className="container">
-        <div className=" grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div className="flex flex-col gap-6">
-            <div className="h-24 w-56 ">
+    <footer className="bg-black text-white py-10">
+      <div className="bg-green-900 text-white p-10 max-w-7xl mx-auto rounded-[20px]">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Section 1 */}
+          <div>
+            <h2 className="text-xl font-semibold mb-4">
               <Image
                 src={logo}
-                className="object-contain"
-                height={400}
-                width={400}
-                alt="image"
+                alt="Logo"
+                width={115}
+                height={80}
+                className="inline-block mr-2"
               />
-            </div>
-            <p className="text-gray-light text-base font-medium">
-              Restoring Homes After Storms and Seasons.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="bg-[#36607b] p-2 rounded-md text-white">
-                <FaFacebookF size={18} />
-              </div>
-              <div className="bg-[#36607b] p-2 rounded-md text-white">
-                <RiLinkedinFill size={20} />
-              </div>
-              <div className="bg-[#36607b] p-2 rounded-md text-white">
-                <IoLogoWhatsapp size={20} />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className=" w-full text-base text-white">
-              <NavMenu className="flex-col mb-4" />
-              <div
-                className={cn("flex flex-col  gap-6  font-normal ps-3 mb-3")}
-              >
-                <Link href={"/gutters"}>
+            </h2>
+            <div className="flex space-x-2">
+              {[FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn].map(
+                (Icon, index) => (
                   <div
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary transition duration-200",
-                      pathname === "/gutters" &&
-                        "text-red-primary font-semibold"
-                    )}
+                    key={index}
+                    className="p-2 border hover:bg-white hover:text-green-800 rounded-full cursor-pointer transition duration-200"
+                    style={{ borderColor: "#FFFFFF1C" }}
                   >
-                    Gutters
+                    <Icon size={24} />
                   </div>
-                </Link>
-                <Link href={"/window"}>
-                  <div
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary transition duration-200",
-                      pathname === "/window" && "text-red-primary font-semibold"
-                    )}
-                  >
-                    Windows
-                  </div>
-                </Link>
-                <Link href={"/commercial"}>
-                  <div
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary transition duration-200",
-                      pathname === "/commercial" &&
-                        "text-red-primary font-semibold"
-                    )}
-                  >
-                    Commercial
-                  </div>
-                </Link>
-              </div>
-              <div className="ps-1  w-full max-w-44">
-                <Accordion isCompact className="">
-                  <AccordionItem
-                    key="1"
-                    aria-label="Other Service"
-                    title={<span className="text-white">Pricing</span>}
-                  >
-                    <div className=" ps-1">
-                      <Link href={"/pricing-cost-calculator/roofing"}>
-                        <div
-                          // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded"
-                          className={cn(
-                            "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200"
-                          )}
-                        >
-                          Roof Cost Calculator
-                        </div>
-                      </Link>
-                      <Link href={"/pricing-cost-calculator/siding"}>
-                        <div
-                          // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 rounded"
-                          className={cn(
-                            "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200"
-                          )}
-                        >
-                          Siding Cost Calculator
-                        </div>
-                      </Link>
-                      <Link href={"/pricing-cost-calculator/window"}>
-                        <div
-                          // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 rounded"
-                          className={cn(
-                            "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200"
-                          )}
-                        >
-                          Window Cost Calculator
-                        </div>
-                      </Link>
-                    </div>
-                  </AccordionItem>
-                </Accordion>
-              </div>
+                )
+              )}
             </div>
           </div>
-          <div>
-            {thirdRow?.map((item, i) => (
-              <Link href={item?.link} key={i}>
-                <div className="cursor-pointer text-white hover:text-red-primary pb-5 rounded">
-                  {item?.title}
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-white">
-            <h3 className="text-xl font-bold mb-6">
-              Get In Touch With us Today
-            </h3>
 
-            {forthRow?.map((item, i) => (
-              <div
-                key={i}
-                className="cursor-pointer text-gray-light hover:text-red-primary p-3 rounded flex items-start gap-2"
-              >
-                <div>{item?.icon}</div>
-                <p className="w-full -mt-1"> {item?.title}</p>
-              </div>
-            ))}
+          {/* Section 2 */}
+          <div>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/" className="hover:text-gray-400">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact-details/about-us"
+                  className="hover:text-gray-400"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-gray-400">
+                  Services{" "}
+                </Link>
+              </li>
+              <li>
+                <Link href="/bookings" className="hover:text-gray-400">
+                  Booking{" "}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Section 3 */}
+          <div>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/faq" className="hover:text-gray-400">
+                  FAQ’s
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact-details/contact-us"
+                  className="hover:text-gray-400"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="hover:text-gray-400">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-of-service" className="hover:text-gray-400">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Section 4 */}
+          <div>
+            <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-gray-400 flex gap-2 items-center"
+                >
+                  <FaPhone size={16} /> +1 (123) 456-7890
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-gray-400 flex gap-2 items-center"
+                >
+                  <MdEmail size={16} /> hello@mail.com
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/"
+                  className="hover:text-gray-400 flex gap-2 items-center"
+                >
+                  <IoLocationOutline size={20} /> 10 3rd Avenue <br /> Houghton
+                  Estate
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Footer;
+        {/* Footer Bottom */}
+        <div className="mt-10 text-center text-sm text-white">
+          &copy; {new Date().getFullYear()} | EFINANCIAL All Rights Reserved
+        </div>
+      </div>
+    </footer>
+  );
+}

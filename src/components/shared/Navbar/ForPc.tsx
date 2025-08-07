@@ -1,169 +1,167 @@
 "use client";
-import React, { useState } from "react";
-import logo from "@/assets/logo/redTextLogo.png";
-import Image from "next/image";
 import Link from "next/link";
-import NavMenu from "./NavMenu";
-import { FaCaretDown } from "react-icons/fa6";
-import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
-import MyButton from "@/components/ui/MyButton/MyButton";
+import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "@/assets/logo.png";
+import Image from "next/image";
+import { LuChevronDown } from "react-icons/lu"; // You can use any icon you prefer
 
-const ForPc = () => {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropdownOpenPricing, setDropdownOpenPricing] = useState(false);
-  const pathname = usePathname();
-  return (
-    <div>
-      <div className="container hidden lg:flex py-3 items-center justify-between ">
-        <Link href={"/"} className="">
-          <div className="flex items-center gap-2 h-full w-28">
-            <Image
-              src={logo}
-              alt="Booksy.buzz"
-              width={400}
-              height={400}
-              className="rounded object-contain"
-            />
-          </div>
+
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => {
+    setIsOpen(false);
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
+  const links = (
+    <>
+      <li onClick={closeMenu}>
+        <Link
+          href="/"
+          className="hover:text-[var(--textColor)] text-[var(--textColor)] font-[600] transition-colors"
+        >
+          Home
         </Link>
-        <div className="flex items-center gap-5 text-base text-[#808080]">
-          <NavMenu className="lg:items-center" isShowBorder={true} />
-          {/* "Other Service" Dropdown  */}
-          <div
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-            className="relative py-5 flex"
+      </li>
+      <li onClick={closeMenu}>
+        <Link
+          href="/pages/tax-preparation"
+          className="hover:text-[var(--textColor)] text-[var(--textColor)] font-[600] transition-colors"
+        >
+          Tax Preparation
+        </Link>
+      </li>
+      <li onClick={closeMenu}>
+        <Link
+          href="/pages/real-state-service"
+          className="hover:text-[var(--textColor)] text-[var(--textColor)] font-[600] transition-colors"
+        >
+          Real Estate Services
+        </Link>
+      </li>
+
+      {/* Dropdown Item */}
+      <li
+        className="relative group"
+        onMouseEnter={() => setDropdownOpen(true)}
+        onMouseLeave={() => setDropdownOpen(false)}
+      >
+        <button
+          onClick={() => setDropdownOpen((prev) => !prev)}
+          className="flex items-center gap-1 hover:text-[var(--textColor)] text-[var(--textColor)] font-[600] transition-colors"
+        >
+          Other Services
+          <LuChevronDown
+            className={`w-4 h-4 transition-transform duration-300 ${
+              dropdownOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        {/* Dropdown Menu */}
+        {dropdownOpen && (
+          <ul className="absolute top-full left-0 mt-1 w-48 bg-white rounded-md shadow-lg z-50 border border-gray-200 overflow-hidden">
+            <li>
+              <Link
+                href="/pages/consulting"
+                className="block px-4 py-2 hover:bg-[var(--primary-color)] hover:text-white text-bold transition"
+                onClick={closeMenu}
+              >
+                Consulting
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/pages/book-appointment"
+                className="block px-4 py-2 hover:bg-[var(--primary-color)] hover:text-white text-sm transition"
+                onClick={closeMenu}
+              >
+                Book Appointment
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/pages/service-3"
+                className="block px-4 py-2 hover:bg-[var(--primary-color)] hover:text-white text-sm transition"
+                onClick={closeMenu}
+              >
+                Service 3
+              </Link>
+            </li>
+          </ul>
+        )}
+      </li>
+
+      <li onClick={closeMenu}>
+        <Link
+          href="/contact-details/about-us"
+          className="hover:text-[var(--textColor)] text-[var(--textColor)] font-[600] transition-colors"
+        >
+          About Us
+        </Link>
+      </li>
+      <li onClick={closeMenu}>
+        <Link
+          href="/contact-details/contact-us"
+          className="bg-[var(--primary-color)] text-white px-6 py-3 font-medium hover:opacity-90 rounded-full transition-all duration-300 inline-block"
+        >
+          Contact Us
+        </Link>
+      </li>
+    </>
+  );
+
+  return (
+    <nav className="sticky top-0 bg-white p-4 shadow-md z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <Link href="/" className="text-xl font-bold flex items-center">
+          <Image
+            src={logo}
+            alt="Logo"
+            width={115}
+            height={80}
+            className="inline-block mr-2"
+            priority
+          />
+        </Link>
+
+        {/* Desktop menu */}
+        <ul className="hidden md:flex space-x-6 items-center">{links}</ul>
+
+        {/* Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={toggleMenu}
+            aria-label="Toggle Menu"
+            className="focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] rounded"
           >
-            <div
-              // className="cursor-pointer  hover:text-red-primary transition duration-200 flex gap-3 items-center"
-
-              className={cn(
-                "cursor-pointer  hover:text-red-primary transition duration-200 flex gap-3 items-center",
-                pathname === "/gutter-fascia-soffit-repair-replacement" &&
-                  "text-red-primary ",
-                pathname === "/pressure-washing" && "text-red-primary "
-              )}
-            >
-              <p> Other Services</p>{" "}
-              <FaCaretDown className={cn(dropdownOpen && "rotate-180")} />
-            </div>
-
-            {/* Dropdown Menu */}
-            {dropdownOpen && (
-              <div className="absolute -left-1/2 top-14 mt-2 bg-white shadow-md rounded-md w-72 p-2 z-[999999]">
-                <Link href={"/gutters"}>
-                  <div
-                    // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded"
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200",
-                      pathname === "/gutters" &&
-                        "text-red-primary bg-slate-100 p-2 mb-2 rounded font-semibold"
-                    )}
-                  >
-                    Gutter
-                  </div>
-                </Link>
-                <Link href={"/window"}>
-                  <div
-                    // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded"
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200",
-                      pathname === "/window" &&
-                        "text-red-primary bg-slate-100 p-2 mb-2 rounded font-semibold"
-                    )}
-                  >
-                    Windows
-                  </div>
-                </Link>
-                <Link href={"/commercial"}>
-                  <div
-                    // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 rounded"
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200",
-                      pathname === "/commercial" &&
-                        "text-red-primary bg-slate-100 p-2 mb-2 rounded font-semibold"
-                    )}
-                  >
-                    Commercial
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div>
-          <div className="h-5 border "></div>
-          <div
-            onMouseEnter={() => setDropdownOpenPricing(true)}
-            onMouseLeave={() => setDropdownOpenPricing(false)}
-            className="relative py-5 flex"
-          >
-            <div
-              // className="cursor-pointer  hover:text-red-primary transition duration-200 flex gap-3 items-center"
-
-              className={cn(
-                "cursor-pointer  hover:text-red-primary transition duration-200 flex gap-3 items-center",
-                pathname === "/pricing" && "text-red-primary ",
-                pathname === "/pricing" && "text-red-primary "
-              )}
-            >
-              <p>Pricing</p>{" "}
-              <FaCaretDown
-                className={cn(dropdownOpenPricing && "rotate-180")}
-              />
-            </div>
-
-            {/* Dropdown Menu */}
-            {dropdownOpenPricing && (
-              <div className="absolute -left-1/2 top-14 mt-2 bg-white shadow-md rounded-md w-72 p-2 z-[999999]">
-                <Link href={"/pricing-cost-calculator/roofing"}>
-                  <div
-                    // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded"
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200",
-                      pathname === "/pricing-cost-calculator/roofing" &&
-                        "text-red-primary bg-slate-100 p-2 mb-2 rounded font-semibold"
-                    )}
-                  >
-                    Roof Cost Calculator
-                  </div>
-                </Link>
-                <Link href={"/pricing-cost-calculator/siding"}>
-                  <div
-                    // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 rounded"
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200",
-                      pathname === "/pricing-cost-calculator/siding" &&
-                        "text-red-primary bg-slate-100 p-2 mb-2 rounded font-semibold"
-                    )}
-                  >
-                    Siding Cost Calculator
-                  </div>
-                </Link>
-                <Link href={"/pricing-cost-calculator/window"}>
-                  <div
-                    // className="cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 rounded"
-                    className={cn(
-                      "cursor-pointer hover:text-red-primary hover:bg-slate-100 p-2 mb-2 rounded transition duration-200",
-                      pathname === "/pricing-cost-calculator/window" &&
-                        "text-red-primary bg-slate-100 p-2 mb-2 rounded font-semibold"
-                    )}
-                  >
-                    Window Cost Calculator
-                  </div>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="">
-          <Link href={"/free-estimate"}>
-            <MyButton title="Free Estimate" />
-          </Link>
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default ForPc;
+      {/* Mobile Menu */}
+      {isOpen && (
+        <>
+          <div
+            className="fixed inset-0 bg-opacity-40 z-30"
+            onClick={closeMenu}
+          />
+          <ul className="md:hidden absolute top-full left-0 w-full bg-white z-40 p-6 space-y-4 shadow-md animate-slideDown">
+            {links}
+          </ul>
+        </>
+      )}
+    </nav>
+  );
+}

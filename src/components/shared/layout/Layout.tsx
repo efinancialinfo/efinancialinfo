@@ -5,7 +5,7 @@ import React, { ReactNode, useState } from "react";
 
 import { usePathname } from "next/navigation";
 
-import logo from "@/assets/logo/redTextLogo.png";
+import logo from "@/assets/logo.png";
 import { MenuOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Layout, Menu, theme } from "antd";
