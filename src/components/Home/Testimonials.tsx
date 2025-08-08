@@ -61,10 +61,10 @@ const testimonials = [
 const Testimonials = () => {
   return (
     <section className="bg-[#0D1F1D] py-16 mb-20">
-      <div className=" max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* Title */}
-        <h2 className="text-center text-5xl font-bold text-white mb-10">
-          What Our Clients <br /> Say About Us.
+        <h2 className="text-center text-4xl sm:text-4xl lg:text-5xl font-bold text-white mb-12">
+          What our clients <br /> say about us.
         </h2>
 
         {/* Cards */}
@@ -72,7 +72,9 @@ const Testimonials = () => {
           {testimonials.map((t, index) => (
             <div
               key={index}
-              className="bg-[#122623] text-white rounded-xl p-12 flex flex-col justify-between shadow-lg"
+              className="bg-[#122623] text-white rounded-xl p-12 flex flex-col justify-between shadow-lg
+                transition-transform duration-300 ease-in-out
+                hover:scale-105 hover:shadow-2xl"
             >
               <p className="text-sm mb-4">{t.review}</p>
               <div className="flex items-center mt-auto">
@@ -99,5 +101,6 @@ const Testimonials = () => {
     </section>
   );
 };
+
 
 export default Testimonials;

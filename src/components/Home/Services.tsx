@@ -61,43 +61,57 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="bg-white py-16 ">
-      <div className="container mx-auto px-4">
+    <section className="bg-white py-12">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <h2 className="text-center text-5xl font-bold text-gray-900 mb-15">
+        <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">
           Services Overview
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="rounded-xl p-6 shadow-sm hover:bg-[var(--primary-color)] bg-[var(--soft-color)] transition duration-200 text-[#171B26] hover:text-white"
-            >
-              <h3 className="font-semibold text-2xl">{service.title}</h3>
-              <p className={`mt-2 text-sm hover:text-white}`}>
-                {service.description}
-              </p>
+       <div
+  key={index}
+  className="
+    p-6 shadow-sm 
+     text-[#171B26] 
+    transition-colors duration-300 ease-in-out 
+    hover:bg-[var(--primary-color)] hover:text-white
+    hover:scale-[1.03] transform-gpu
 
-              {/* Image */}
-              <div className="mt-4 flex justify-center w-60 h-44 bg-white rounded-lg">
-                <Image
-                  src={service.image}
-                  width={218}
-                  height={180}
-                  alt="Service Image"
-                  className="rounded-lg"
-                />
-              </div>
+    rounded-[20px] border border-white/10 bg-white/10  
+  "
+>
+  <h3 className="font-semibold text-[#171B26] text-xl sm:text-2xl text-center sm:text-left transition-colors duration-300 ease-in-out ">
+    {service.title}
+  </h3>
+  <p className="mt-2 pb-4 text-sm text-center sm:text-left text-[#585C67] transition-colors duration-300 ease-in-out">
+    {service.description}
+  </p>
 
-              {/* Button */}
-              <button
-                className={`mt-4 w-full border px-4 py-2 rounded-full text-sm font-medium transition border-white bg-white text-[var(--primary-color)] hover:bg-white cursor-pointer hover:text-[var(--primary-color)]`}
-              >
-                Learn More
-              </button>
-            </div>
+  <div className="mt-4 flex justify-center items-center bg-white rounded-lg w-full h-40 sm:h-44">
+    <Image
+      src={service.image}
+      alt="Service Image"
+      width={218}
+      height={180}
+      className="object-contain"
+    />
+  </div>
+
+  <button
+    className="
+      mt-4 w-full border px-4 py-2 rounded-full text-sm font-medium 
+      transition-colors duration-300 ease-in-out
+      border-white border-[var(--primary-color)] bg-white text-[var(--primary-color)] 
+      hover:bg-white hover:text-[var(--primary-color)]
+    "
+  >
+    Learn More
+  </button>
+</div>
+
           ))}
         </div>
       </div>

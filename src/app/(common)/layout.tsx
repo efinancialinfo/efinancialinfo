@@ -22,11 +22,11 @@ export default function RootLayout({
       <NextUiProvider>
         <ReduxProvider>
           <>
-            <div className="min-h-screen grid grid-rows-[auto_1fr_auto] max-w-[100vw] overflow-hidden">
-              <Navbar />
-              {children}
-              <Footer />
-            </div>
+       <div className="min-h-screen flex flex-col max-w-[100vw] overflow-hidden">
+  <Navbar />
+  <main className="flex-grow">{children}</main>
+  <Footer />
+</div>
             <ScrollToTopButton />
             <Toaster />
           </>
