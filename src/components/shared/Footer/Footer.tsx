@@ -41,7 +41,7 @@ const contactItems = [
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-10">
+    <footer className="bg-[#0F1F18] text-white py-10 mb-">
       <div className="bg-[#28543F] p-10 max-w-7xl mx-auto rounded-[20px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
           {/* Section 1 */}

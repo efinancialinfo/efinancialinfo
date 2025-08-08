@@ -6,7 +6,7 @@ import WhatDocuments from "@/components/pages-components/WhatDocuments";
 
 export default function page() {
   return (
-    <div>
+    <div className="">
       <TaxPreparation />
       <WhatDocuments />
       <TaxServiceSpecialties />

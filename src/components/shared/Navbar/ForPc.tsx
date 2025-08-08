@@ -1,110 +1,133 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { useEffect, useState, useRef } from "react"
-import { usePathname } from "next/navigation"
-import { ChevronDown, MenuIcon, X } from 'lucide-react'
-import logo from "@/assets/logo.png"
+import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { ChevronDown, MenuIcon, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export default function Navbar() {
-  const pathname = usePathname()
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Lock body scroll when drawer is open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "auto"
+    document.body.style.overflow = mobileOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = "auto"
-    }
-  }, [mobileOpen])
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileOpen]);
 
   // Close dropdown if clicked outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
-        dropdownRef.current && 
+        dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        setDropdownOpen(false)
+        setDropdownOpen(false);
       }
     }
     if (dropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside)
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownOpen]);
+
+  // Improved active link detection
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === href;
     }
-  }, [dropdownOpen])
+    return pathname.startsWith(href);
+  };
 
   const otherServicesItems = [
     { href: "/consulting", label: "Consulting" },
     { href: "/book-appointment", label: "Book Appointment" },
     { href: "/service-3", label: "Service 3" },
-  ]
+  ];
 
   const mobileMenuItems = [
     { href: "/", label: "Home" },
-    { href: "/pages/tax-preparation", label: "Tax Preparation" },
-    { href: "/pages/real-state-service", label: "Real Estate Services" },
+    { href: "/tax-preparation", label: "Tax Preparation" },
+    { href: "/real-state-service", label: "Real Estate Services" },
     {
       label: "Other Services",
       children: otherServicesItems,
     },
     { href: "/about-us", label: "About Us" },
     { href: "/contact-us", label: "Contact Us", fontMedium: true },
-  ]
+  ];
 
-  const closeMobile = () => setMobileOpen(false)
+  const closeMobile = () => setMobileOpen(false);
 
   return (
-    <nav className="sticky top-0 z-50 py-5 w-full bg-white shadow">
+    <nav className="fixed top-0 z-50 py-5 w-full bg-white shadow">
       <div className="mx-auto flex h-16 container items-center justify-between px-4 md:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 w-24" aria-label="Go to homepage">
-<Image
-  src={logo}
-  alt="Logo"
-  width={300} // larger than before
-  height={80} // larger than before
-  className="h-20 w-auto" // increase Tailwind height class
-  priority
-/>
+        <Link
+          href="/"
+          className="flex items-center gap-2 w-24"
+          aria-label="Go to homepage"
+        >
+          <Image
+            src={logo}
+            alt="Logo"
+            width={300}
+            height={80}
+            className="h-20 w-28"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-6 md:flex">
+  <div className="hidden items-center gap-4 md:gap-6 lg:gap-8 xl:gap-10 md:flex">
           <Link
             href="/"
-            className={`font-semibold transition-colors ${
-              pathname === "/" ? "text-gray-900" : "text-gray-700 hover:text-gray-900"
+            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
+              isActive("/")
+                ? "text-emerald-700 bg-emerald-50"
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
             Home
+            {isActive("/") && (
+              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+            )}
           </Link>
           <Link
-            href="/pages/tax-preparation"
-            className={`font-semibold transition-colors ${
-              pathname === "/pages/tax-preparation"
-                ? "text-gray-900"
-                : "text-gray-700 hover:text-gray-900"
+            href="/tax-preparation"
+            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
+              isActive("/tax-preparation")
+                ? "text-emerald-700 bg-emerald-50"
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
             Tax Preparation
+            {isActive("/tax-preparation") && (
+              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+            )}
           </Link>
           <Link
-            href="/pages/real-state-service"
-            className={`font-semibold transition-colors ${
-              pathname === "/pages/real-state-service"
-                ? "text-gray-900"
-                : "text-gray-700 hover:text-gray-900"
+            href="/real-state-service"
+            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
+              isActive("/real-state-service")
+                ? "text-emerald-700 bg-emerald-50"
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
             Real Estate Services
+            {isActive("/real-state-service") && (
+              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+            )}
           </Link>
 
           {/* Other Services Dropdown */}
@@ -116,12 +139,19 @@ export default function Navbar() {
           >
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-1 font-semibold text-gray-700 transition-colors hover:text-gray-900 focus:outline-none"
+              className={`flex items-center gap-1 font-semibold transition-colors relative py-2 px-3 rounded-md ${
+                isActive("/consulting") || isActive("/book-appointment") || isActive("/service-3")
+                  ? "text-emerald-700 bg-emerald-50"
+                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              }`}
               aria-haspopup="menu"
               aria-expanded={dropdownOpen}
             >
               Other Services
               <ChevronDown className="h-4 w-4" aria-hidden="true" />
+              {(isActive("/consulting") || isActive("/book-appointment") || isActive("/service-3")) && (
+                <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+              )}
             </button>
 
             {dropdownOpen && (
@@ -130,7 +160,11 @@ export default function Navbar() {
                   <li key={href}>
                     <Link
                       href={href}
-                      className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
+                      className={`block px-4 py-2 ${
+                        isActive(href)
+                          ? "bg-emerald-50 text-emerald-700"
+                          : "text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
+                      }`}
                       onClick={() => setDropdownOpen(false)}
                     >
                       {label}
@@ -143,11 +177,16 @@ export default function Navbar() {
 
           <Link
             href="/about-us"
-            className={`font-semibold transition-colors ${
-              pathname === "/about-us" ? "text-gray-900" : "text-gray-700 hover:text-gray-900"
+            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
+              isActive("/about-us")
+                ? "text-emerald-700 bg-emerald-50"
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
             }`}
           >
             About Us
+            {isActive("/about-us") && (
+              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+            )}
           </Link>
         </div>
 
@@ -156,7 +195,11 @@ export default function Navbar() {
           <Link href="/contact-us">
             <button
               type="button"
-              className="rounded-full bg-[#28543F] px-5 py-2 font-medium text-white hover:bg-emerald-700 transition"
+              className={`hover:bg-white px-6 py-3 rounded-full font-medium border-2 transition ${
+                isActive("/contact-us")
+                  ? "bg-emerald-800 text-white border-emerald-800 hover:text-emerald-800"
+                  : "bg-emerald-800 text-white border-emerald-800 hover:text-emerald-800"
+              }`}
             >
               Contact Us
             </button>
@@ -179,7 +222,9 @@ export default function Navbar() {
       {/* Overlay */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-30 transition-opacity ${
-          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          mobileOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
         }`}
         onClick={closeMobile}
       />
@@ -192,8 +237,18 @@ export default function Navbar() {
         aria-label="Mobile menu"
       >
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <Link href="/" onClick={closeMobile} className="flex items-center gap-2">
-            <Image src={logo} alt="Logo" width={200} height={140} className="h-8 w-auto" />
+          <Link
+            href="/"
+            onClick={closeMobile}
+            className="flex items-center gap-2"
+          >
+            <Image
+              src={logo}
+              alt="Logo"
+              width={200}
+              height={140}
+              className="h-8 w-auto"
+            />
             <span className="sr-only">Home</span>
           </Link>
           <button
@@ -217,7 +272,11 @@ export default function Navbar() {
                         <Link
                           href={href}
                           onClick={closeMobile}
-                          className="block rounded px-2 py-1 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
+                          className={`block rounded px-2 py-1 ${
+                            isActive(href)
+                              ? "bg-emerald-50 text-emerald-700"
+                              : "text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
+                          }`}
                         >
                           {label}
                         </Link>
@@ -231,7 +290,7 @@ export default function Navbar() {
                     href={item.href!}
                     onClick={closeMobile}
                     className={`block rounded px-2 py-1 transition ${
-                      pathname === item.href
+                      isActive(item.href)
                         ? "bg-emerald-50 text-emerald-700 font-semibold"
                         : "text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
                     } ${item.fontMedium ? "font-medium" : ""}`}
@@ -245,5 +304,5 @@ export default function Navbar() {
         </nav>
       </aside>
     </nav>
-  )
+  );
 }

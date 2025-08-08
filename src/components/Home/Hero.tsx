@@ -5,7 +5,7 @@ import { FaPlay } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <section className="bg-white py-12">
+    <section className="bg-white py-12 container">
       <div className=" mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left Content */}
         <div>
@@ -17,7 +17,7 @@ const Hero = () => {
             small business consulting.
           </p>
 
-          <button className="mt-6 bg-green-800 text-white px-6 py-3 rounded-full font-medium hover:bg-green-900 transition">
+          <button className="mt-6 hover:bg-white hover:text-green-800 bg-green-800 text-white px-6 py-3 rounded-full font-medium  border-2 border-green-800 transition">
             Book an Appointment
           </button>
 
@@ -47,14 +47,22 @@ const Hero = () => {
 
         {/* Right Illustration */}
    <div className="flex justify-center relative">
-  <Image
-    src={heroImg}
-    alt="Hero Illustration"
-    className="rounded-3xl"
-  />
+    <div 
+    className="transition-transform duration-500 ease-in-out hover:scale-105 rounded-3xl overflow-hidden"
+    style={{ display: 'inline-block' }}
+  >
+    <Image
+      src={heroImg}
+      alt="Hero Illustration"
+      className="rounded-3xl"
+      width={800}  // Recommended: define width/height for layout stability
+      height={500}
+      priority
+    />
+  </div>
 
 <button
-  className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-4 text-timber-green-900-main md:px-6 px-3 md:text-2xl text-base py-3 font-medium transition rounded-full border hover:bg-timber-green-800 border-timber-green-800 bg-white font-inter text-[20px] leading-[120%] text-[#182F25] hover:bg-[#182F25] hover:text-white"
+  className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-4 text-timber-green-900-main md:px-6 px-3 md:text-2xl  md:py-3 py-2 font-medium transition rounded-full border hover:bg-timber-green-800 border-timber-green-800 bg-white font-inter text-[15px] leading-[120%] text-[#182F25] hover:bg-[#182F25] hover:text-white"
 >
   File My Taxes
 

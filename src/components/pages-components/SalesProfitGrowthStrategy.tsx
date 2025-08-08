@@ -4,42 +4,45 @@ import Image from "next/image";
 
 const SalesProfitGrowthStrategy = () => {
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-              Sales & Profit Growth <br /> Strategy
-            </h2>
+          {/* Left Content */}
+          <div className="space-y-8">
+            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-semibold text-[#171B26] font-inter leading-[120%]">
+              Sales & Profit Growth Strategy
+            </h1>
 
-            <div className="space-y-4 text-gray-600">
-              <p className="flex gap-2 items-center">
-                {" "}
-                <BsCheckCircleFill style={{ color: "#28543F" }} /> Review your
-                pricing, offers, and revenue streams
-              </p>
-              <p className="flex gap-2 items-center">
-                {" "}
-                <BsCheckCircleFill style={{ color: "#28543F" }} /> Create a
-                step-by-step sales process to attract and convert clients
-              </p>
-              <p className="flex gap-2 items-center">
-                {" "}
-                <BsCheckCircleFill style={{ color: "#28543F" }} /> Align Your
-                Marketing Efforts With Sales and Client Retention
-              </p>
+            <div className="space-y-5 text-gray-700 text-base sm:text-lg">
+              {[
+                "Review your pricing, offers, and revenue streams",
+                "Create a step-by-step sales process to attract and convert clients",
+                "Align Your Marketing Efforts With Sales and Client Retention",
+              ].map((text, i) => (
+                <p key={i} className="flex gap-3 items-center text-[#28543F]">
+                  <BsCheckCircleFill className="flex-shrink-0" size={20} />
+                  {text}
+                </p>
+              ))}
             </div>
-            <button className="bg-[var(--primary-color)] hover:bg-[var(--primary-color)] cursor-pointer text-white px-6 py-3 rounded-md">
+
+            <button
+              className="mt-6 bg-green-800 hover:bg-white hover:text-green-800 text-white px-8 py-3 rounded-full font-semibold border-2 border-green-800 transition-colors duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-green-800"
+              type="button"
+            >
               Discuss Your Sales Challenges
             </button>
           </div>
-          <div className="relative">
+
+          {/* Right Image */}
+          <div className="relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={img}
-              alt="Business Strategy Planning"
-              className="w-full h-auto rounded-2xl shadow-lg"
+              alt="Sales & Profit Growth Strategy"
+              className="w-full h-auto rounded-2xl"
               width={555}
               height={610}
+              priority
             />
           </div>
         </div>

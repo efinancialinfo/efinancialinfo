@@ -1,21 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import individualImage from "@/assets/tax-preparation/individual-docs.png"; // Replace with actual image
-import businessImage from "@/assets/tax-preparation/business-docs.png"; // Replace with actual image
+import individualImage from "@/assets/tax-preparation/individual-docs.png";
+import businessImage from "@/assets/tax-preparation/business-docs.png";
 import { FaCheckCircle } from "react-icons/fa";
 
 const WhatDocuments = () => {
   return (
-    <section className="bg-[#f1f9f6] py-16 mt-24">
+    <section className="bg-[#f1f9f6] py-16 mt-24 container">
       <div className="max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a1a] mb-12">
-          WHAT DOCUMENTS DO I NEED?
-        </h2>
+        <h1 className="md:text-5xl mb-16 md:mb-14 text-center text-4xl text-gray-900 leading-[120%] font-bold font-inter uppercase">
+          What Documents Do I Need?
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Individual Card */}
-          <div className="bg-white rounded-xl p-6 sm:p-8 shadow-md flex flex-col h-full">
+          <div
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-md flex flex-col h-full
+            transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+            hover:shadow-xl hover:scale-[1.015] hover:-translate-y-1 transform"
+          >
             <div className="flex justify-center mb-6">
               <Image
                 src={individualImage}
@@ -50,7 +54,11 @@ const WhatDocuments = () => {
           </div>
 
           {/* Business Card */}
-          <div className="bg-white rounded-xl p-6 sm:p-8 shadow-md flex flex-col h-full">
+          <div
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-md flex flex-col h-full
+            transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
+            hover:shadow-xl hover:scale-[1.015] hover:-translate-y-1 transform"
+          >
             <div className="flex justify-center mb-6">
               <Image
                 src={businessImage}

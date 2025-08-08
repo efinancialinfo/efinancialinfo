@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ARC (Allied Restoration Contractors)",
+  title: "Efinancial",
   description:
-    "Award Winning Service Allied Restoration Contractors, Repairs & Replacement",
+    "Efinancial is a full-service accounting and tax preparation firm specializing in small business accounting, tax preparation, and bookkeeping services.",
 };
 
 export default function RootLayout({

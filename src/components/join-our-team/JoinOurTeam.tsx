@@ -1,36 +1,44 @@
+
+import bgImage from "@/assets/bg.png"; // your actual image path
+
 export default function JoinTeamSection() {
   return (
-    <section className="py-16 px-4 md:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="relative bg-[#0F1F18] rounded-3xl overflow-hidden">
-          {/* Background decorative elements */}
-          <div className="absolute inset-0">
-            {/* Large curved shape */}
-            <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-700 rounded-full opacity-30 -translate-x-32 -translate-y-32"></div>
-            {/* Medium curved shape */}
-            <div className="absolute bottom-0 right-0 w-48 h-48 bg-emerald-900 rounded-full opacity-40 translate-x-24 translate-y-24"></div>
-            {/* Small accent shape */}
-            <div className="absolute top-1/2 right-1/4 w-32 h-32 bg-emerald-600 rounded-full opacity-20"></div>
-          </div>
+    <div className="flex items-center justify-center p-6 mb-20 mt-20">
+      <div className="w-full max-w-4xl">
+        <div className="relative rounded-3xl px-12 py-16 overflow-hidden shadow-2xl bg-[var(--primary-color)] group">
+
+          {/* Background image with zoom on hover */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out transform group-hover:scale-105"
+            style={{ backgroundImage: `url(${bgImage.src})` }}
+          />
           
+          {/* Overlay for better text contrast, subtle change on hover */}
+         
+
           {/* Content */}
-          <div className="relative z-10 text-center py-24 px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              Join Our Team
-            </h2>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-[#28543F] hover:bg-emerald-700 text-white px-8 py-3 rounded-2xl font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-emerald-800">
-                Apply Here
+          <div className="relative z-10 text-center text-white">
+            <h1 className="text-5xl font-bold mb-12 tracking-tight drop-shadow-lg">
+Join Our Team
+            </h1>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              {/* Primary Button */}
+              <button className="bg-white cursor-pointer hover:bg-[var(--primary-color)] hover:text-white transition-colors duration-500 text-[var(--primary-color)] px-6 py-3 rounded-full font-medium text-base flex items-center gap-3 shadow-md hover:shadow-lg hover:scale-105 transform-gpu">
+          Apply Here
+          
               </button>
-              
-              <button className="border-1 border-white text-white hover:bg-white hover:text-emerald-800 px-8 py-3 rounded-2xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-emerald-800">
-                View Openings
+
+              {/* Secondary Button */}
+              <button className="bg-white cursor-pointer hover:bg-[var(--primary-color)] hover:text-white transition-colors duration-200 text-[var(--primary-color)] px-6 py-3 rounded-full font-medium text-base flex items-center gap-3 shadow-md hover:shadow-lg hover:scale-105 transform-gpu">
+          View Openings
+               
               </button>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  )
+    </div>
+  );
 }

@@ -60,8 +60,8 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="bg-[#0D1F1D] py-16 mb-20">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-[#0D1F1D] py-16">
+      <div className="container mx-auto">
         {/* Title */}
         <h2 className="text-center text-4xl sm:text-4xl lg:text-5xl font-bold text-white mb-12">
           What our clients <br /> say about us.
