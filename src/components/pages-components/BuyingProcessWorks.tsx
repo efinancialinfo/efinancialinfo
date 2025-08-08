@@ -1,6 +1,11 @@
 
-import { Home, Handshake, Search, FileCheck2 } from 'lucide-react'
+
+import Home from '@/assets/icon/Home'
 import { StepsProcess } from './Step-process'
+import Handshake from '@/assets/icon/HandShake'
+import Search from '@/assets/icon/Search'
+import FileCheck2 from '@/assets/icon/FileCheck2'
+import Key from '@/assets/icon/Key'
 
 export default function Page() {
   // Example showing you can mix React SVG icons and string SVG URLs
@@ -18,7 +23,7 @@ export default function Page() {
     {
       title: "Search Your Home",
       description: "Tour homes that fit your lifestyle and needs.",
-      icon: <Search />,
+      icon: <Search/>,
     },
     {
       title: "Make an Offer & Due Diligence",
@@ -29,7 +34,7 @@ export default function Page() {
       title: "Close & Get Keys",
       description: "Finalize paperwork and celebrate your new home.",
       // Any external or local SVG works:
-      icon: "/placeholder.svg?height=40&width=40",
+      icon: <Key />,
       iconAlt: "Key handoff icon",
     },
   ]

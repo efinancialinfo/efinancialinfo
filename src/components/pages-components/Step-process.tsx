@@ -9,9 +9,6 @@ export type StepItem = {
   id?: number
   title: string
   description: string
-  // Use any SVG:
-  // - React node (e.g., <Icon /> from lucide-react)
-  // - string URL/path to an .svg file
   icon: React.ReactNode | string
   iconAlt?: string
 }
@@ -25,17 +22,6 @@ const COLORS: Record<Accent, { ring: string; dotBg: string; stroke: string; dash
   sky: { ring: 'ring-sky-200', dotBg: 'bg-sky-600', stroke: 'text-sky-300', dash: 'text-sky-300' },
   rose: { ring: 'ring-rose-200', dotBg: 'bg-rose-600', stroke: 'text-rose-300', dash: 'text-rose-300' },
   slate: { ring: 'ring-slate-200', dotBg: 'bg-slate-600', stroke: 'text-slate-300', dash: 'text-slate-300' },
-}
-
-type StepsProcessProps = {
-  title?: string
-  steps?: StepItem[]
-  className?: string
-  accent?: Accent
-  // Curve amplitude in px (how high/low the wave goes)
-  amplitude?: number
-  // Dash pattern of the line "length gap"
-  dashPattern?: string // e.g., "6 10"
 }
 
 function StepIcon({
@@ -89,7 +75,6 @@ function useCurvePath(
       })
     }
 
-    // Build a smooth cubic Bézier path that alternates above/below the baseline
     if (points.length < 2) {
       setD('')
       return
@@ -100,7 +85,7 @@ function useCurvePath(
       const p0 = points[i]
       const p1 = points[i + 1]
       const dx = p1.x - p0.x
-      const sign = i % 2 === 0 ? -1 : 1 // alternate up/down
+      const sign = i % 2 === 0 ? -1 : 1
       const a = amplitude * sign
 
       const c1x = p0.x + dx / 3
@@ -120,7 +105,7 @@ function useCurvePath(
     const ro = new ResizeObserver(() => recompute())
     if (containerRef.current) ro.observe(containerRef.current)
     window.addEventListener('resize', recompute)
-    const id = window.setInterval(recompute, 200) // guard for icon font/layout swaps
+    const id = window.setInterval(recompute, 200)
     return () => {
       ro.disconnect()
       window.removeEventListener('resize', recompute)
@@ -133,47 +118,22 @@ function useCurvePath(
 
 export function StepsProcess({
   title = 'How the Process Works',
-  steps = [
-    {
-      title: 'Get Pre-Approved',
-      description: 'Connect with a trusted lender to understand your budget and boost your buying power.',
-      icon: '/placeholder.svg?height=40&width=40',
-      iconAlt: 'Pre-approval',
-    },
-    {
-      title: 'Meet Your Realtor',
-      description: 'Work with a local expert who understands your needs and market.',
-      icon: '/placeholder.svg?height=40&width=40',
-      iconAlt: 'Handshake',
-    },
-    {
-      title: 'Search Your Home',
-      description: 'Explore homes that fit your lifestyle and get expert advice along the way.',
-      icon: '/placeholder.svg?height=40&width=40',
-      iconAlt: 'Search home',
-    },
-    {
-      title: 'Make an Offer & Due Diligence',
-      description: 'From offers to inspections and negotiations, we’ll guide you smoothly.',
-      icon: '/placeholder.svg?height=40&width=40',
-      iconAlt: 'Checklist',
-    },
-    {
-      title: 'Close & Get Keys',
-      description: 'Finalize paperwork, unlock your new home, and celebrate!',
-      icon: '/placeholder.svg?height=40&width=40',
-      iconAlt: 'Keys',
-    },
-  ],
+  steps = [],
   className,
   accent = 'emerald',
   amplitude = 28,
   dashPattern = '6 10',
-}: StepsProcessProps) {
+}: {
+  title?: string
+  steps?: StepItem[]
+  className?: string
+  accent?: Accent
+  amplitude?: number
+  dashPattern?: string
+}) {
   const color = COLORS[accent]
   const normalized = steps.map((s, i) => ({ id: i + 1, ...s }))
 
-  // Refs for measuring icon centers on desktop/tablet
   const containerRef = React.useRef<HTMLDivElement>(null)
   const iconRefs = React.useMemo(
     () => normalized.map(() => React.createRef<HTMLDivElement>()),
@@ -190,9 +150,8 @@ export function StepsProcess({
           </h2>
         </header>
 
-        {/* Desktop/Tablet with CURVED dashed connector */}
+        {/* Desktop / Tablet */}
         <div ref={containerRef} className="relative hidden md:block">
-          {/* SVG curved, dashed path behind icons */}
           {d && (
             <svg
               className={cn('pointer-events-none absolute inset-0 z-0', color.stroke)}
@@ -222,15 +181,15 @@ export function StepsProcess({
               <li key={idx} className="flex flex-col items-center text-center">
                 <div className="relative" ref={iconRefs[idx]}>
                   <StepIcon icon={step.icon} alt={step.iconAlt} accent={accent} />
-                  {/* numbered badge */}
+                  {/* Number badge */}
                   <div
                     className={cn(
-                      'absolute -bottom-2 right-1 h-8 w-8 rounded-full flex items-center justify-center text-sm font-medium shadow-sm text-white',
+                      'absolute -bottom-3 -right-3 h-8 w-8 rounded-full flex items-center justify-center text-sm font-medium shadow-sm text-white',
                       color.dotBg
                     )}
                     aria-hidden="true"
                   >
-                    {step.id}
+                    {String(step.id).padStart(2, '0')}
                   </div>
                 </div>
                 <div className="mt-6 space-y-2">
@@ -244,7 +203,7 @@ export function StepsProcess({
           </ol>
         </div>
 
-        {/* Mobile vertical layout (straight line for readability) */}
+        {/* Mobile */}
         <div className="md:hidden">
           <ol className="relative">
             <div aria-hidden="true" className={cn('absolute left-6 top-0 bottom-0 border-l-2 border-dashed border-emerald-300')} />
@@ -255,12 +214,12 @@ export function StepsProcess({
                     <StepIcon icon={step.icon} alt={step.iconAlt} accent={accent} />
                     <div
                       className={cn(
-                        'absolute -bottom-2 -right-2 h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium shadow-sm text-white',
+                        'absolute -bottom-3 -right-3 h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium shadow-sm text-white',
                         color.dotBg
                       )}
                       aria-hidden="true"
                     >
-                      {step.id}
+                      {String(step.id).padStart(2, '0')}
                     </div>
                   </div>
                   <div>
@@ -277,7 +236,6 @@ export function StepsProcess({
   )
 }
 
-// Quick demo export (you can remove if using only named export)
 export default function StepsProcessDemo() {
   return <StepsProcess />
 }
