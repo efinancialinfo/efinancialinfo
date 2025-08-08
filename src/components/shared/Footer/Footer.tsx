@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/assets/footer-logo.png";
+import logo from "@/assets/logo3.png";
 import {
   FaFacebookF,
   FaTwitter,
@@ -14,15 +14,15 @@ import { IoLocationOutline } from "react-icons/io5";
 const socialIcons = [FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn];
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/contact-details/about-us", label: "About Us" },
-  { href: "/services", label: "Services" },
+  { href: "/about-us", label: "About Us" },
+  { href: "#", label: "Services" },
   { href: "/bookings", label: "Booking" },
 ];
 const infoLinks = [
   { href: "/faq", label: "FAQ’s" },
-  { href: "/contact-details/contact-us", label: "Contact" },
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms-of-service", label: "Terms of Service" },
+  { href: "/contact-us", label: "Contact" },
+  { href: "#", label: "Privacy Policy" },
+  { href: "#", label: "Terms of Service" },
 ];
 const contactItems = [
   { href: "/", icon: FaPhone, text: "+1 (123) 456-7890", size: 16 },
@@ -42,7 +42,7 @@ const contactItems = [
 export default function Footer() {
   return (
     <footer className="bg-[#0F1F18] text-white py-10 mb-">
-      <div className="bg-[#28543F] p-10 max-w-7xl mx-auto rounded-[20px]">
+      <div className="bg-[#28543F] p-10 container mx-auto rounded-[20px]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto px-4">
           {/* Section 1 */}
           <div>
@@ -100,7 +100,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="mt-10 text-center md:text-base  hover:text-gray-400 text-[#EBEBEB] ">
+        <div className="mt-10 text-center md:text-base   text-[#EBEBEB] ">
           &copy; {new Date().getFullYear()} | EFINANCIAL All Rights Reserved
         </div>
       </div>

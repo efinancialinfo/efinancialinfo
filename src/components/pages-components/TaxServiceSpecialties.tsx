@@ -3,6 +3,7 @@
 import Image from "next/image";
 import illustration from "@/assets/tax-preparation/tax-service-illustration.png";
 import { FaCheckCircle } from "react-icons/fa";
+import Link from "next/link";
 
 const TaxServiceSpecialties = () => {
   return (
@@ -25,7 +26,7 @@ const TaxServiceSpecialties = () => {
         {/* Right: Text Content */}
         <div>
           <h1 className="md:text-5xl mb-10 md:mb-14 text-4xl text-gray-900 leading-[120%] font-bold font-inter uppercase text-center md:text-left">
-         TAX SERVICE SPECIALTIES 
+            TAX SERVICE SPECIALTIES
           </h1>
 
           <ul className="space-y-4 text-[#333] text-base">
@@ -53,7 +54,7 @@ const TaxServiceSpecialties = () => {
             transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]
             hover:bg-white hover:text-green-800 hover:shadow-lg hover:scale-[1.05]"
           >
-            Book an Appointment
+            <Link href="/book-appointment">Book an Appointment</Link>
           </button>
         </div>
       </div>

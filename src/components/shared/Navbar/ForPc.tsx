@@ -52,7 +52,7 @@ export default function Navbar() {
   const otherServicesItems = [
     { href: "/consulting", label: "Consulting" },
     { href: "/book-appointment", label: "Book Appointment" },
-    { href: "/service-3", label: "Service 3" },
+    { href: "/faq", label: "FAQ" },
   ];
 
   const mobileMenuItems = [

@@ -74,12 +74,12 @@ const Services = () => {
             <div
               key={index}
               className="
-                p-6 shadow-sm text-[#171B26] 
+                p-6 shadow-sm text-[#171B26]   border-[#EBEBEB] bg-[#F2F8F3] 
                 transition-colors duration-300 ease-in-out 
                 hover:bg-[var(--primary-color)] 
                 hover:scale-[1.03] transform-gpu
-                border-[#EBEBEB] bg-[#F2F8F3]
-                rounded-[25px] border border-white/10 bg-white/10
+               
+                rounded-[25px] border 
                 flex flex-col hover:text-white
               "
             >

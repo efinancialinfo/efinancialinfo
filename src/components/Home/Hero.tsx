@@ -2,6 +2,7 @@ import Image from "next/image";
 import heroImg from "@/assets/home/hero-image.png";
 import videoThumb from "@/assets/home/video-image.png";
 import { FaPlay } from "react-icons/fa";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -18,7 +19,13 @@ const Hero = () => {
           </p>
 
           <button className="mt-6 hover:bg-white hover:text-green-800 bg-green-800 text-white px-6 py-3 rounded-full font-medium  border-2 border-green-800 transition">
-            Book an Appointment
+         
+
+            <Link href="/book-appointment">
+        
+
+               Book an Appointment
+            </Link>
           </button>
 
           {/* Video Box */}
