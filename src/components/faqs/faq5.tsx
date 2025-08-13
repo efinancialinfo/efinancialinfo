@@ -115,40 +115,39 @@ const FaqAccordion = ({
 };
 
 // Main Page Component
-export default function Faq2() {
+export default function Faq5() {
   const faqItems = [
     {
-      question:
-        " What do I need to file my business taxes?",
+      question: "What is a notary public? ",
       answer:
-        "You’ll need your income records, expense receipts, payroll reports (if applicable), and any other documents that show your business’ sfinancial activity for the year.",
+        "A notary public is an official authorized to verify identities, witness signatures, and administer oaths on important documents.",
     },
     {
-      question: "Can you help me reduce my tax liability? ",
+      question: "What types of documents can you notarize?",
       answer:
-        "Yes,we look for every deduction and credit you qualify for, and we can suggest strategies to reduce your tax liability in the future.",
+        "We can notarize a variety of documents, including contracts, real estate documents, affidavits, wills, powers of attorney, and more.",
     },
     {
-      question: "When are business taxes due?",
+      question: "Do I need to bring an ID for notarization? ",
       answer:
-        "Most business tax returns are due by March 15 or April 15, depending on your business type, but deadlines can vary.",
+        "Yes, you must present a valid government-issued photo ID such as a driver’s license or passport.",
     },
     {
-      question: "Can you file the return if my business is in another state?",
+      question: " Can you come to me for a notarization? ",
       answer:
-        "Yes, we file for businesses in all 50 states and can work with you remotely through our secure portal.",
+        "Yes, we offer flexible scheduling and can travel to your location when needed.",
     },
-    {
-      question: "When should I consider quarterly tax payments to the IRS?",
+     {
+      question: "How long does the notarization process take?",
       answer:
-        "If your business owes more than $1,000 in taxes, you may need to make estimated payments every quarter to avoid penalties.",
+        "Most appointments take just a few minutes once all documents and identification are ready",
     },
   ];
 
   return (
-    <main className="mx-auto  px-4 py-16 sm:py-20 bg-[#FAF6ED]">
-      <h1 className="text-center text-3xl font-extrabold tracking-tight sm:text-4xl">
-        Business tax Filling
+    <main className="mx-auto px-4 py-16 sm:py-20">
+      <h1 className="text-center text-3xl font-extrabold tracking-tigh text-[#171B26]  sm:text-4xl">
+        Notary Services
       </h1>
       <div className="mt-8 sm:mt-12 container">
         <FaqAccordion items={faqItems} defaultOpen={1} />

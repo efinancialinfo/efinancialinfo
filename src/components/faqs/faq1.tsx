@@ -118,31 +118,36 @@ const FaqAccordion = ({
 export default function Faq1() {
   const faqItems = [
     {
-      question: "What documents do I need to bring for tax preparation?",
+      question: "How much do you charge?",
       answer:
-        "Common documents include W-2s, 1099s, identification, prior-year return, income and expense records, and documentation for deductions and credits.",
+        "Pricing depends on the forms and schedules needed. Each has a set fee; your total is the sum required for an accurate filing. We’ll confirm the price after review, and it may vary year to year.",
     },
     {
-      question: "Do you handle self-employed or small business taxes?",
+      question: "How long does it take to get my refund?",
       answer:
-        "Yes! We specialize in helping freelancers, contractors, and small business owners with tax planning and filing.",
+        "If the Child Tax Credit or Earned Income Credit was claimed, the IRS cannot release your refund until at least February 15, and it may arrive around February 27 or later.For most other refunds, the IRS states that about 90% are issued within 21 days. You can track yours using the Can you file in any state",
     },
     {
-      question: "Do you handle tax returns from previous years?",
+      question: "Can you file in any state?",
       answer:
-        "Absolutely. We can prepare and file prior-year returns, amend past filings, and help resolve notices from the IRS or state.",
+        "Yes, we work with clients nationwide.Most of our work is done through our secure portal, email, and phone appointments.In-person meetings are not required.",
     },
     {
-      question: "Can you help if I haven’t filed taxes in a few years?",
+      question: "What should I do if I receive a notice from the IRS?",
       answer:
-        "Yes. We’ll review your situation, gather the needed documents, and create a clear plan to get you back on track.",
+        "Send us the notice right away. We’ll review it,and instruct you on how to respond.IRS notices are not always correct, andmost require a response within 30 days.In some cases, a special form is needed if you want us to sign on your behalf.",
+    },
+     {
+      question: " I filed my tax return on [Date], I still have not received my refund.",
+      answer:
+        "If your refund is late, it could be due to a debt offset (call 800-304-3107) A processing delay (call the IRS at 800-829-4477 If it’s been over 3 weeks), incorrect deposit or mailing info, or because federal and state refunds are issued separately.",
     },
   ];
 
   return (
     <main className="mx-auto px-4 py-16 sm:py-20">
       <h1 className="text-center text-3xl font-extrabold tracking-tigh text-[#171B26]  sm:text-4xl">
-        Tax Preparation & Strategy
+        Individual Tax Filling
       </h1>
       <div className="mt-8 sm:mt-12 container">
         <FaqAccordion items={faqItems} defaultOpen={1} />

@@ -118,31 +118,56 @@ const FaqAccordion = ({
 export default function Faq4() {
   const faqItems = [
     {
-      question: "What documents do I need to bring for tax preparation?",
+      question: "Why is strategy important for my business?",
       answer:
-        "Common documents include W-2s, 1099s, identification, prior-year return, income and expense records, and documentation for deductions and credits.",
+        "A clear strategy helps you set goals, make smart decisions based on data, and grow your business by a measurable metric towards the set goal.",
     },
     {
-      question: "Do you handle self-employed or small business taxes?",
+      question: "How can IT consulting help my business? ",
       answer:
-        "Yes! We specialize in helping freelancers, contractors, and small business owners with tax planning and filing.",
+        "IT consulting aligns technology with your goals so you reach more customers and run leaner process. We assess your needs, map your processes, and implement the right tools and then train your team.",
     },
     {
-      question: "Do you handle tax returns from previous years?",
+      question: "How can you help our marketing?",
       answer:
-        "Absolutely. We can prepare and file prior-year returns, amend past filings, and help resolve notices from the IRS or state.",
+        "Set up and optimize Google Ads/Meta Ads, run SEO audits/fixes, implement GA4 + Tag Manager for end-to-end tracking.",
     },
     {
-      question: "Can you help if I haven’t filed taxes in a few years?",
+      question: "How do we know what’s working? ",
       answer:
-        "Yes. We’ll review your situation, gather the needed documents, and create a clear plan to get you back on track.",
+        "Define KPIs, build marketing dashboards, and set up attribution so spend maps to results.",
+    },
+    {
+      question: "How can you streamline our operations? ",
+      answer:
+        "Map processes, remove bottlenecks, and automate handoffs.",
+    },
+    {
+      question: "Can you help pick or implement an ERP/CRM?",
+      answer:
+        "Yes—evaluate options (e.g., NetSuite, Odoo, Salesforce, HubSpot), run pilots, migrate data, and train teams.",
+    },
+    {
+      question: "We need better reporting, where do we start? ",
+      answer:
+        "Stand up a data warehouse, automate pipelines, and deliver Power BI dashboards for finance, sales, and ops.",
+    },
+    {
+      question: "Can you clean up our data? ",
+      answer:
+        "Standardize, dedupe, and validate data; add governance so reports stay trustworthy.",
+    },
+    {
+      question: "Can you fix our website performance and SEO? ",
+      answer:
+        "Improve speed, UX, schema, and technical SEO; connect GA4 + Search Console.",
     },
   ];
 
   return (
     <main className="mx-auto  px-4 py-16 sm:py-20 bg-white">
       <h1 className="text-center text-3xl font-extrabold tracking-tight text-[#171B26] sm:text-4xl">
-Booking & Appointments
+        Strategy & IT Consulting
       </h1>
       <div className="mt-8 sm:mt-12 container">
         <FaqAccordion items={faqItems} defaultOpen={1} />

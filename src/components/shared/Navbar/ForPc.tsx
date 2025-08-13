@@ -50,7 +50,6 @@ export default function Navbar() {
   };
 
   const otherServicesItems = [
-    { href: "/consulting", label: "Consulting" },
     { href: "/book-appointment", label: "Book Appointment" },
     { href: "/faq", label: "FAQ" },
   ];
@@ -71,7 +70,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 z-50 py-5 w-full bg-white shadow">
-      <div className="mx-auto flex h-16 container items-center justify-between px-4 md:px-6">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         {/* Logo */}
         <Link
           href="/"
@@ -89,7 +88,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-  <div className="hidden items-center gap-4 md:gap-6 lg:gap-8 xl:gap-10 md:flex">
+        <div className="hidden items-center gap-4 md:gap-6 lg:gap-8 xl:gap-10 md:flex">
           <Link
             href="/"
             className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
@@ -129,6 +128,19 @@ export default function Navbar() {
               <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
             )}
           </Link>
+          <Link
+            href="/consulting"
+            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
+              isActive("/consulting")
+                ? "text-emerald-700 bg-emerald-50"
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            }`}
+          >
+            Consulting Services
+            {isActive("/consulting") && (
+              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+            )}
+          </Link>
 
           {/* Other Services Dropdown */}
           <div
@@ -140,16 +152,20 @@ export default function Navbar() {
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className={`flex items-center gap-1 font-semibold transition-colors relative py-2 px-3 rounded-md ${
-                isActive("/consulting") || isActive("/book-appointment") || isActive("/service-3")
+               
+                isActive("/book-appointment") ||
+                isActive("/service-3")
                   ? "text-emerald-700 bg-emerald-50"
                   : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
               }`}
               aria-haspopup="menu"
               aria-expanded={dropdownOpen}
             >
-              Other Services
+              Other
               <ChevronDown className="h-4 w-4" aria-hidden="true" />
-              {(isActive("/consulting") || isActive("/book-appointment") || isActive("/service-3")) && (
+              {(isActive("/consulting") ||
+                isActive("/book-appointment") ||
+                isActive("/service-3")) && (
                 <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
               )}
             </button>

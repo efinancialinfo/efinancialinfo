@@ -118,31 +118,51 @@ const FaqAccordion = ({
 export default function Faq3() {
   const faqItems = [
     {
-      question: "What documents do I need to bring for tax preparation?",
+      question: "How long does it take to buy a home?",
       answer:
-        "Common documents include W-2s, 1099s, identification, prior-year return, income and expense records, and documentation for deductions and credits.",
+        "On average, it takes 30-45 days from the time your offer is accepted to closing, but it can vary based on inspections, appraisals, and financing.",
     },
     {
-      question: "Do you handle self-employed or small business taxes?",
+      question: "How much money do I need for a down payment?",
       answer:
-        "Yes! We specialize in helping freelancers, contractors, and small business owners with tax planning and filing.",
+        "Many loans allow as little as 3–5% down, and some programs require no down payment. Your lender can tell you what works best for you.",
     },
     {
-      question: "Do you handle tax returns from previous years?",
+      question: "Why should I use a real estate agent instead of buying or selling on my own?",
       answer:
-        "Absolutely. We can prepare and file prior-year returns, amend past filings, and help resolve notices from the IRS or state.",
+        "An agent brings market expertise, negotiation skills, and guidance to avoid costly mistakes, often saving you time and money in the long run.",
     },
     {
-      question: "Can you help if I haven’t filed taxes in a few years?",
+      question: "What’s the difference between pre-qualification and pre-approval?",
       answer:
-        "Yes. We’ll review your situation, gather the needed documents, and create a clear plan to get you back on track.",
+        "Pre-qualification is an estimate of what you can afford, while pre-approval is a lender’s written commitment after reviewing your finances.",
+    },
+    {
+      question: " Can I buy a home with bad credit? ",
+      answer:
+        "Potentially, some loan programs work with lower credit scores, however improving your credit score may give you better rates and terms.",
+    },
+    {
+      question: "How do you help sellers get the best price?",
+      answer:
+        "We use professional marketing, staging advice, and market analysis to position your home for maximum value.",
+    },
+    {
+      question: "Do I need a 20% down payment to buy a home?",
+      answer:
+        " No. Many loans require far less, and some programs even offer zero down payment options.",
+    },
+    {
+      question: "How much does it cost to work with a buyer’s agent?",
+      answer:
+        "Buyer’s agent fees can be paid by the buyer, the seller, or both. We’ll outline costs upfront.",
     },
   ];
 
   return (
     <main className="mx-auto  px-4 py-16 sm:py-20 bg-[#F1F8F4]">
       <h1 className="text-center text-[#171B26] text-3xl font-extrabold tracking-tight sm:text-4xl">
-Business Filing Services
+        Real Estate Services
       </h1>
       <div className="mt-8 sm:mt-12 container">
         <FaqAccordion items={faqItems} defaultOpen={1} />
