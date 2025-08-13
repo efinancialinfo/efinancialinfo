@@ -32,19 +32,19 @@ const TaxServiceSpecialties = () => {
           <ul className="space-y-4 text-[#333] text-base">
             <li className="flex items-start gap-3">
               <FaCheckCircle className="text-green-600 mt-1 shrink-0" />
-              Individuals with simple or complex tax needs
+              Individuals (all return types)
             </li>
             <li className="flex items-start gap-3">
               <FaCheckCircle className="text-green-600 mt-1 shrink-0" />
-              Freelancers, contractors, and gig workers
+              Self-Employed Professionals & Independent Contractors
             </li>
             <li className="flex items-start gap-3">
               <FaCheckCircle className="text-green-600 mt-1 shrink-0" />
-              Small business owners, startups, and S-Corps
+              Small-Business Owners
             </li>
             <li className="flex items-start gap-3">
               <FaCheckCircle className="text-green-600 mt-1 shrink-0" />
-              Anyone looking for smarter tax-saving strategies
+              Tax Planning and Optimization to Minimize Liability
             </li>
           </ul>
 

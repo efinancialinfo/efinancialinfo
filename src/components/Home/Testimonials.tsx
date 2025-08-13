@@ -117,7 +117,7 @@ const Testimonials = () => {
       <div className="container mx-auto">
         {/* Title */}
         <h2 className="text-center text-4xl sm:text-4xl lg:text-5xl font-bold text-white mb-12">
-          What our clients <br /> say about us.
+          What our clients  say about us
         </h2>
 
         {/* Cards */}
