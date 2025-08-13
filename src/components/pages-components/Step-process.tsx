@@ -177,11 +177,11 @@ export function StepsProcess({
             className="relative z-10 grid gap-6 md:gap-8"
             style={{ gridTemplateColumns: `repeat(${normalized.length}, minmax(0, 1fr))` }}
           >
-            {normalized.map((step, idx) => (
+            {normalized?.map((step, idx) => (
               <li key={idx} className="flex flex-col items-center text-center">
                 <div className="relative" ref={iconRefs[idx]}>
                   <StepIcon icon={step.icon} alt={step.iconAlt} accent={accent} />
-                  {/* Number badge */}
+                  {/* Number badge (removed leading 0) */}
                   <div
                     className={cn(
                       'absolute -bottom-3 -right-3 h-8 w-8 rounded-full flex items-center justify-center text-sm font-medium shadow-sm text-white',
@@ -189,7 +189,7 @@ export function StepsProcess({
                     )}
                     aria-hidden="true"
                   >
-                    {String(step.id).padStart(2, '0')}
+                    {step.id}
                   </div>
                 </div>
                 <div className="mt-6 space-y-2">
@@ -219,7 +219,7 @@ export function StepsProcess({
                       )}
                       aria-hidden="true"
                     >
-                      {String(step.id).padStart(2, '0')}
+                      {step.id}
                     </div>
                   </div>
                   <div>
