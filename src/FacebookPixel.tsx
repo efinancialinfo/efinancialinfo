@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // components/FacebookPixel.tsx
-'use client';
+"use client";
 
-import { useEffect } from 'react';
+import Image from "next/image";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -20,8 +21,6 @@ type Fbq = {
   version?: string;
 };
 
-
-
 export default function FacebookPixel() {
   useEffect(() => {
     // Inject the Facebook Pixel script only once
@@ -34,30 +33,31 @@ export default function FacebookPixel() {
         }
       };
       fbq.loaded = true;
-      fbq.version = '2.0';
+      fbq.version = "2.0";
       fbq.queue = [];
       window.fbq = fbq;
       window._fbq = fbq;
 
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.async = true;
-      script.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      const firstScript = document.getElementsByTagName('script')[0];
+      script.src = "https://connect.facebook.net/en_US/fbevents.js";
+      const firstScript = document.getElementsByTagName("script")[0];
       if (firstScript && firstScript.parentNode) {
         firstScript.parentNode.insertBefore(script, firstScript);
       }
     }
 
-    if (window.fbq) window.fbq('init', '720061294011638');
-    if (window.fbq) window.fbq('track', 'PageView');
+    if (window.fbq) window.fbq("init", "720061294011638");
+    if (window.fbq) window.fbq("track", "PageView");
   }, []);
 
   return (
     <noscript>
-      <img
-        height="1"
-        width="1"
-        style={{ display: 'none' }}
+      <Image
+        alt="text"
+        width={1}
+        height={1}
+        style={{ display: "none" }}
         src="https://www.facebook.com/tr?id=720061294011638&ev=PageView&noscript=1"
       />
     </noscript>

@@ -11,7 +11,18 @@ import {
 import { MdEmail } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 
-const socialIcons = [FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn];
+const socialIcons = [
+  {
+    Icon: FaFacebookF,
+    link: "https://www.facebook.com/share/1DK43pKtrY/?mibextid=wwXIf",
+  },
+  { Icon: FaTwitter, link: "" },
+  {
+    Icon: FaInstagram,
+    link: "https://www.instagram.com/_efinancial?igsh=MWw5MGZmb2plczd6ZA==",
+  },
+  { Icon: FaLinkedinIn, link: "" },
+];
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about-us", label: "About Us" },
@@ -25,14 +36,21 @@ const infoLinks = [
   { href: "#", label: "Terms of Service" },
 ];
 const contactItems = [
-  { href: "/", icon: FaPhone, text: "+1 (123) 456-7890", size: 16 },
-  { href: "/", icon: MdEmail, text: "hello@mail.com", size: 16 },
+  { href: "/", icon: FaPhone, text: "+321-999-5639", size: 16 },
+  { href: "/", icon: MdEmail, text: "support@efinancial.info", size: 16 },
   {
     href: "/",
     icon: IoLocationOutline,
     text: (
       <>
-        10 3rd Avenue <br /> Houghton Estate
+        <Link
+          href="https://www.google.com/maps/search/?api=1&query=775+S+Kirkman+Rd+Ste+105,+Orlando,+FL+32811"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:underline"
+        >
+          775 S Kirkman Rd Ste 105, Orlando, FL 32811
+        </Link>
       </>
     ),
     size: 20,
@@ -47,26 +65,38 @@ export default function Footer() {
           {/* Section 1 */}
           <div>
             <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <Image src={logo} alt="Logo" width={115} height={80} className="mr-2" />
+              <Image
+                src={logo}
+                alt="Logo"
+                width={115}
+                height={80}
+                className="mr-2"
+              />
             </h2>
             <div className="flex space-x-2">
-              {socialIcons.map((Icon, i) => (
-                <div
+              {socialIcons?.map(({ Icon, link }, i) => (
+                <Link
                   key={i}
-                  className="p-2 border rounded-full cursor-pointer transition duration-200 hover:bg-white hover:text-green-800"
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 border rounded-full cursor-pointer transition duration-200 hover:bg-white hover:text-green-800 inline-flex"
                   style={{ borderColor: "#FFFFFF1C" }}
                 >
                   <Icon size={24} />
-                </div>
+                </Link>
               ))}
             </div>
           </div>
 
           {/* Section 2 */}
           <ul className="space-y-2 text-sm">
-            {navLinks.map(({ href, label }) => (
+            {navLinks?.map(({ href, label }) => (
               <li key={href}>
-                <Link href={href} className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2">
+                <Link
+                  href={href}
+                  className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2"
+                >
                   {label}
                 </Link>
               </li>
@@ -77,7 +107,10 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             {infoLinks.map(({ href, label }) => (
               <li key={href}>
-                <Link href={href} className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2">
+                <Link
+                  href={href}
+                  className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2"
+                >
                   {label}
                 </Link>
               </li>
@@ -88,9 +121,12 @@ export default function Footer() {
           <div>
             <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
             <ul className="space-y-2 text-sm">
-              {contactItems.map(({ href, icon: Icon, text, size }, i) => (
+              {contactItems?.map(({ href, icon: Icon, text, size }, i) => (
                 <li key={i}>
-                  <Link href={href} className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2 flex  items-center">
+                  <Link
+                    href={href}
+                    className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2 flex  items-center"
+                  >
                     <Icon size={size} /> {text}
                   </Link>
                 </li>

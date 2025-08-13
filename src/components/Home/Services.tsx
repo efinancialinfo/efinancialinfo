@@ -6,49 +6,19 @@ import consultingImg from "@/assets/home/business-consult.png";
 
 const services = [
   {
-    title: (
-      <>
-        Tax Preparation <br /> & Strategy
-      </>
-    ),
-    description: (
-      <>
-        Accurate filing and expert <br /> strategies to save you money
-      </>
-    ),
+    title: <>Individual & Business Filling</>,
+    description: <>Accurate filing to maximize your refund and savings</>,
     image: taxImg,
     active: false,
   },
   {
-    title: (
-      <>
-        Notary <br /> Services
-      </>
-    ),
-    description: (
-      <>
-        Certified notary services with <br /> flexible scheduling.
-      </>
-    ),
-    image: notaryImg,
-    active: true,
-  },
-  {
-    title: (
-      <>
-        Business <br /> Filing
-      </>
-    ),
-    description: (
-      <>
-        Start or grow your business with <br /> full compliance.
-      </>
-    ),
+    title: <>Real <br /> Estate</>,
+    description: <>Guiding you through every step of buying or selling</>,
     image: businessImg,
     active: false,
   },
-  {
-    title: "Small Business Consulting",
+   {
+    title: "Strategy & IT Consulting",
     description: (
       <>
         Get strategic advice to take <br /> your business forward.
@@ -57,11 +27,23 @@ const services = [
     image: consultingImg,
     active: false,
   },
+  {
+    title: (
+      <>
+        Notary <br /> Services
+      </>
+    ),
+    description: <>Certified notary services with flexible options</>,
+    image: notaryImg,
+    active: true,
+  },
+  
+ 
 ];
 
 const Services = () => {
   return (
-    <section className="bg-white py-12 container">
+    <section className="bg-[var(--softColor)] py-12 container hover:text-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">
@@ -74,19 +56,16 @@ const Services = () => {
             <div
               key={index}
               className="
-                p-6 shadow-sm text-[#171B26]   border-[#EBEBEB] bg-[#F2F8F3] 
-                transition-colors duration-300 ease-in-out 
-                hover:bg-[var(--primary-color)] 
-                hover:scale-[1.03] transform-gpu
-               
-                rounded-[25px] border 
-                flex flex-col hover:text-white
-              "
+    group p-6 shadow-sm border-[#EBEBEB] bg-[#F2F8F3] 
+    transition-all duration-300 ease-in-out 
+    hover:bg-[var(--primary-color)] hover:scale-[1.03] transform-gpu
+    rounded-[25px] border flex flex-col
+  "
             >
-              <h3 className="font-semibold text-[#171B26] hover:text-white text-xl sm:text-2xl text-center sm:text-left transition-colors duration-300 ease-in-out">
+              <h3 className="font-semibold text-xl sm:text-2xl text-center sm:text-left text-[#171B26] transition-colors duration-300 ease-in-out group-hover:text-white">
                 {service.title}
               </h3>
-              <p className="mt-2 text-sm text-center sm:text-left text-[#585C67] transition-colors duration-300 ease-in-out">
+              <p className="mt-2 text-sm text-center sm:text-left text-[#585C67] transition-colors duration-300 ease-in-out group-hover:text-white">
                 {service.description}
               </p>
 
@@ -100,14 +79,14 @@ const Services = () => {
                 />
               </div>
 
-              {/* Push button to bottom */}
               <button
                 className="
-                  mt-auto border px-4 py-2 rounded-full text-sm font-medium 
-                  transition-colors duration-300 ease-in-out
-                  border-[#28543F] bg-white text-[var(--primary-color)] 
-                  hover:bg-white hover:text-[var(--primary-color)]
-                "
+                mt-3
+ border px-4 py-2 rounded-full text-sm font-medium 
+      transition-colors duration-300 ease-in-out
+      border-[#28543F] bg-white text-[var(--primary-color)] 
+      group-hover:border-white group-hover:bg-transparent group-hover:text-white
+    "
               >
                 Learn More
               </button>
