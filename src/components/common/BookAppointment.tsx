@@ -2,6 +2,7 @@
 import React from 'react';
 import { Form, Select, DatePicker, TimePicker, Input, Checkbox, Button } from 'antd';
 import 'antd/dist/reset.css'; 
+import Link from 'next/link';
 
 const { Option } = Select;
 
@@ -130,9 +131,9 @@ const BookAppointmentPage = () => {
         >
           <Checkbox>
             I agree to the{' '}
-            <a href="#" style={{ color: '#1890ff' }}>
+            <Link href="#" style={{ color: '#1890ff' }}>
               Privacy Policy
-            </a>
+            </Link>
           </Checkbox>
         </Form.Item>
 

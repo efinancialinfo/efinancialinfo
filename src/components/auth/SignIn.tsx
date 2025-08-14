@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const SignIn = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -31,9 +33,9 @@ const SignIn = () => {
               <input type="checkbox" className="form-checkbox" />
               <span className="text-sm text-gray-600">Remember me</span>
             </label>
-            <a href="#" className="text-sm text-blue-600 hover:underline">
+            <Link href="#" className="text-sm text-blue-600 hover:underline">
               Forgot password?
-            </a>
+            </Link>
           </div>
           <button
             type="submit"
@@ -44,9 +46,9 @@ const SignIn = () => {
         </form>
         <p className="mt-4 text-sm text-center text-gray-600">
           Don’t have an account?{" "}
-          <a href="/auth/sign-up" className="text-blue-600 hover:underline">
+          <Link href="/auth/sign-up" className="text-blue-600 hover:underline">
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

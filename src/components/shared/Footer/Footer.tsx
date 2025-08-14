@@ -36,9 +36,16 @@ const infoLinks = [
   { href: "#", label: "Terms of Service" },
 ];
 const contactItems = [
-  { href: "/", icon: FaPhone, text: "+321-999-5639", size: 16 },
-  { href: "/", icon: MdEmail, text: "support@efinancial.info", size: 16 },
+  { id: 1, href: "/", icon: FaPhone, text: "+321-999-5639", size: 16 },
   {
+    id: 2,
+    href: "/",
+    icon: MdEmail,
+    text: "support@efinancial.info",
+    size: 16,
+  },
+  {
+    id: 3,
     href: "/",
     icon: IoLocationOutline,
     text: (
@@ -105,8 +112,8 @@ export default function Footer() {
 
           {/* Section 3 */}
           <ul className="space-y-2 text-sm">
-            {infoLinks.map(({ href, label }) => (
-              <li key={href}>
+            {infoLinks?.map(({ href, label }) => (
+              <li key={label}>
                 <Link
                   href={href}
                   className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2"
@@ -121,14 +128,20 @@ export default function Footer() {
           <div>
             <h2 className="text-xl font-semibold mb-4">Contact Us</h2>
             <ul className="space-y-2 text-sm">
-              {contactItems?.map(({ href, icon: Icon, text, size }, i) => (
-                <li key={i}>
-                  <Link
-                    href={href}
-                    className="hover:text-gray-400 text-[#EBEBEB] md:text-base  gap-2 flex  items-center"
-                  >
-                    <Icon size={size} /> {text}
-                  </Link>
+              {contactItems.map(({ id, href, icon: Icon, text, size }) => (
+                <li key={id}>
+                  {typeof text === "string" ? (
+                    <Link
+                      href={href}
+                      className="hover:text-gray-400 text-[#EBEBEB] md:text-base gap-2 flex items-center"
+                    >
+                      <Icon size={size} /> {text}
+                    </Link>
+                  ) : (
+                    <div className="gap-2 flex items-center">
+                      <Icon size={size} /> {text}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>

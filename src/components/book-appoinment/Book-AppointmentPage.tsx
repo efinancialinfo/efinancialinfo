@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CalendarIcon, Clock3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 type AppointmentFormProps = {
   services?: { value: string; label: string }[];
@@ -220,12 +221,12 @@ export default function AppointmentForm({
             />
             <label htmlFor="policy" className="text-xs text-slate-700">
               I agree to the{" "}
-              <a
+              <Link
                 href="#"
                 className="font-medium text-emerald-700 underline underline-offset-2"
               >
                 Privacy Policy
-              </a>
+              </Link>
               .
             </label>
           </div>
