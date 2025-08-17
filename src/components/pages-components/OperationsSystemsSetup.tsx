@@ -1,5 +1,5 @@
 import { BsCheckCircleFill } from "react-icons/bs";
-import img from "@/assets/consulting-page/3.png";
+import img from "@/assets/consulting-page/Website_Setup_1_.png";
 import Image from "next/image";
 
 const OperationsSystemsSetup = () => {
@@ -21,7 +21,7 @@ const OperationsSystemsSetup = () => {
 
           {/* Left Text Content */}
           <div className="space-y-8">
-            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-semibold text-[#171B26] font-inter leading-[120%]">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold text-[#171B26] font-inter leading-[120%]">
           Operations & Systems Setup
             </h1>
 

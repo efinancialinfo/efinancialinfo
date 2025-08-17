@@ -9,7 +9,7 @@ const SalesProfitGrowthStrategy = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-8">
-            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-semibold text-[#171B26] font-inter leading-[120%]">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold text-[#171B26] font-inter leading-[120%]">
               Sales & Profit Growth Strategy
             </h1>
 

@@ -24,7 +24,7 @@ export default function Page() {
       icon: <Search />,
     },
     {
-      title: "Make an Offer & Due Diligence",
+      title: "Offer & Due Diligence",
       description:
         "From offers to inspections and negotiations—we’ve got it covered.",
       icon: <FileCheck2 />,

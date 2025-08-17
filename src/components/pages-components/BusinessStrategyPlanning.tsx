@@ -11,7 +11,7 @@ const BusinessStrategyPlanning = () => {
         {/* Left Content */}
         <div className="flex flex-col justify-center space-y-24">
           <div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-[#171B26] font-inter leading-[120%]">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold text-[#171B26] font-inter leading-[120%]">
               Business Strategy & Planning
             </h1>
 
