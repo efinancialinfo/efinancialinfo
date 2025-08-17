@@ -38,6 +38,7 @@ function StepIcon({
     <div
       className={cn(
         'relative mx-auto h-24 w-24 rounded-full bg-white shadow-sm flex items-center justify-center ring-1',
+        'transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-md',
         color.ring
       )}
     >
@@ -178,13 +179,17 @@ export function StepsProcess({
             style={{ gridTemplateColumns: `repeat(${normalized.length}, minmax(0, 1fr))` }}
           >
             {normalized?.map((step, idx) => (
-              <li key={idx} className="flex flex-col items-center text-center">
-                <div className="relative" ref={iconRefs[idx]}>
+              <li 
+                key={idx} 
+                className="flex flex-col items-center text-center group"
+              >
+                <div className="relative cursor-pointer" ref={iconRefs[idx]}>
                   <StepIcon icon={step.icon} alt={step.iconAlt} accent={accent} />
                   {/* Number badge (removed leading 0) */}
                   <div
                     className={cn(
                       'absolute -bottom-3 -right-3 h-8 w-8 rounded-full flex items-center justify-center text-sm font-medium shadow-sm text-white',
+                      'transition-all duration-300 ease-in-out group-hover:scale-125 group-hover:shadow-lg',
                       color.dotBg
                     )}
                     aria-hidden="true"
@@ -192,9 +197,11 @@ export function StepsProcess({
                     {step.id}
                   </div>
                 </div>
-                <div className="mt-6 space-y-2">
-                  <h3 className="text-base md:text-lg font-semibold">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed max-w-[28ch] mx-auto">
+                <div className="mt-6 space-y-2 transition-all duration-300 ease-in-out group-hover:scale-105">
+                  <h3 className="text-base md:text-lg font-semibold group-hover:text-[#171B26] transition-colors duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-[28ch] mx-auto group-hover:text-foreground transition-colors duration-300">
                     {step.description}
                   </p>
                 </div>
@@ -209,12 +216,16 @@ export function StepsProcess({
             <div aria-hidden="true" className={cn('absolute left-6 top-0 bottom-0 border-l-2 border-dashed border-emerald-300')} />
             <div className="space-y-8">
               {normalized.map((step, idx) => (
-                <li key={idx} className="relative flex gap-4">
+                <li 
+                  key={idx} 
+                  className="relative flex gap-4 group"
+                >
                   <div className="relative shrink-0">
                     <StepIcon icon={step.icon} alt={step.iconAlt} accent={accent} />
                     <div
                       className={cn(
                         'absolute -bottom-3 -right-3 h-7 w-7 rounded-full flex items-center justify-center text-xs font-medium shadow-sm text-white',
+                        'transition-all duration-300 ease-in-out group-hover:scale-125 group-hover:shadow-lg',
                         color.dotBg
                       )}
                       aria-hidden="true"
@@ -222,9 +233,13 @@ export function StepsProcess({
                       {step.id}
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-base font-semibold text-[#171B26]">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mt-1">{step.description}</p>
+                  <div className="transition-all duration-300 ease-in-out group-hover:translate-x-1">
+                    <h3 className="text-base font-semibold text-[#171B26] group-hover:text-[#0F172A] transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-1 group-hover:text-foreground transition-colors duration-300">
+                      {step.description}
+                    </p>
                   </div>
                 </li>
               ))}

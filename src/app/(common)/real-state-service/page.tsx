@@ -1,10 +1,10 @@
 import BuyingProcessWorks from "@/components/pages-components/BuyingProcessWorks";
-import HomeownershipHero from "@/components/pages-components/HomeownershipHero";
+import HomeOwnershipHero from "@/components/pages-components/HomeownershipHero";
 
 export default function page() {
   return (
     <div>
-      <HomeownershipHero />
+      <HomeOwnershipHero />
       <BuyingProcessWorks />
     </div>
   );
