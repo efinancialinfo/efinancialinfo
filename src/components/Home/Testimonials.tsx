@@ -116,7 +116,7 @@ const Testimonials = () => {
     <section className="bg-[#0D1F1D] py-16">
       <div className="container mx-auto">
         {/* Title */}
-        <h2 className="text-center text-4xl sm:text-4xl lg:text-5xl font-bold text-white mb-12">
+        <h2 className="text-center uppercase text-4xl sm:text-3xl lg:text-4xl font-bold text-white mb-12">
           What our clients  say about us
         </h2>
 

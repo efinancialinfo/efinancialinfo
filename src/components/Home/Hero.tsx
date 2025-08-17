@@ -1,5 +1,6 @@
+"use client";
 import Image from "next/image";
-import heroImg from "@/assets/home/hero-bg-1.png";
+import heroImage from "@/assets/home/hero-Img1.png";
 import videoThumb from "@/assets/home/video-image.png";
 import { FaPlay } from "react-icons/fa";
 import Link from "next/link";
@@ -17,9 +18,11 @@ const Hero = () => {
             Expert help with taxes, real estate, notary, and business solutions
           </p>
           <div>
-            <button className="mt-6 hover:bg-white hover:text-green-800 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition">
-              <Link href="/book-appointment">Book an Appointment</Link>
-            </button>
+            <Link href="/book-appointment">
+              <button className="mt-6 hover:bg-white hover:text-green-800 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition">
+                Book an Appointment
+              </button>
+            </Link>
           </div>
 
           {/* Video Box */}
@@ -47,11 +50,12 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Illustration */}
-        <div className="relative w-full h-full">
+        {/* Right Illustration (Desktop only) */}
+        <div className="relative w-full h-full hidden lg:flex flex-col items-center">
+          {/* Hero Image */}
           <div className="relative w-full h-full rounded-3xl overflow-hidden transition-transform duration-500 ease-in-out hover:scale-105">
             <Image
-              src={heroImg}
+              src={heroImage}
               alt="Hero Illustration"
               fill
               className="object-cover rounded-3xl"
@@ -59,7 +63,8 @@ const Hero = () => {
             />
           </div>
 
-          {/* <button className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-4 text-timber-green-900-main md:px-6 px-3 md:text-2xl md:py-3 py-2 font-medium transition rounded-full border hover:bg-timber-green-800 border-timber-green-800 bg-white font-inter text-[15px] leading-[120%] text-[#182F25] hover:bg-[#182F25] hover:text-white">
+          {/* Floating button (desktop only) */}
+          <button className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-6 py-3 font-medium transition rounded-full border border-green-800 bg-white font-inter text-base leading-[120%] text-[#182F25] hover:bg-[#182F25] hover:text-white shadow-lg">
             File My Taxes
             <span className="flex items-center justify-center w-10 h-10 rounded-full bg-green-800">
               <svg
@@ -77,7 +82,30 @@ const Hero = () => {
                 />
               </svg>
             </span>
-          </button> */}
+          </button>
+        </div>
+
+        {/* Normal button (Mobile + Tablet only) */}
+        <div className="flex justify-center mt-6 w-full lg:hidden">
+          <button className="flex items-center gap-3 px-5 py-2 text-sm font-medium transition rounded-full border border-green-800 bg-green-800 text-white hover:bg-[#182F25] shadow-md">
+            File My Taxes
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-green-800">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 7L7 17M17 7H7m10 0v10"
+                />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
     </section>

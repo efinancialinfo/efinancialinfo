@@ -9,9 +9,9 @@ const WhatDocuments = () => {
   return (
     <section className="bg-[#f1f9f6] py-16 mt-24">
       <div className="max-w-7xl mx-auto px-4 text-center">
-        <h1 className="md:text-5xl mb-16 md:mb-14 text-center text-4xl text-gray-900 leading-[120%] font-bold font-inter uppercase">
+        <h2 className="md:text-4xl mb-16 md:mb-14 text-center text-4xl text-gray-900 leading-[120%] font-bold font-inter uppercase">
           What Documents Do I Need?
-        </h1>
+        </h2>
 
         <div className="flex flex-wrap justify-center gap-6">
           {/* Individual Card */}

@@ -113,7 +113,7 @@ const TaxPreparation = () => {
 
   return (
     <section className="mt-12 mx-auto container px-4">
-      <h1 className="md:text-5xl mb-16 md:mb-14 text-center text-4xl text-gray-900 leading-[120%] font-bold font-inter uppercase">
+      <h1 className="md:text-4xl mb-16 md:mb-14 text-center text-4xl text-gray-900 leading-[120%] font-bold font-inter uppercase">
         Year-Round Tax Support
       </h1>
 
