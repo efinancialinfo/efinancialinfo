@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import taxImg from "@/assets/home/tax-preparation.png";
+import taxImg from "@/assets/home/Frame.png";
 import notaryImg from "@/assets/home/notary-service.png";
 import businessImg from "@/assets/home/business-filing.png";
 import consultingImg from "@/assets/home/business-consult.png";
