@@ -36,12 +36,33 @@ const infoLinks = [
   { href: "#", label: "Terms of Service" },
 ];
 const contactItems = [
-  { id: 1, href: "/", icon: FaPhone, text: "+321-999-5639", size: 16 },
+  {
+    id: 1,
+    href: "/",
+    icon: FaPhone,
+    text: (
+      <>
+        <Link href="tel:+3219995639" className="text-white hover:underline">
+          +321-999-5639
+        </Link>
+      </>
+    ),
+    size: 16,
+  },
   {
     id: 2,
     href: "/",
     icon: MdEmail,
-    text: "support@efinancial.info",
+    text: (
+      <>
+        <Link
+          href="mailto:support@efinancial.info"
+          className="text-white hover:underline"
+        >
+          support@efinancial.info
+        </Link>
+      </>
+    ),
     size: 16,
   },
   {

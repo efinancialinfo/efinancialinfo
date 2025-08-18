@@ -9,7 +9,7 @@ export default function Component() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-6 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-semibold text-[#171B26] font-inter leading-[120%]">
+            <h1 className="text-4xl sm:text-4xl md:text-5xl font-semibold text-[#171B26] font-inter leading-[120%]">
               Our Mission
             </h1>
 

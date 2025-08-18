@@ -137,7 +137,7 @@ export default function Faq5() {
       answer:
         "Yes, we offer flexible scheduling and can travel to your location when needed.",
     },
-     {
+    {
       question: "How long does the notarization process take?",
       answer:
         "Most appointments take just a few minutes once all documents and identification are ready",
@@ -145,7 +145,7 @@ export default function Faq5() {
   ];
 
   return (
-    <main className="mx-auto px-4 py-16 sm:py-20">
+    <main className="mx-auto px-4 py-16 sm:py-20 bg-[#FAF6ED]">
       <h1 className="text-center text-3xl font-extrabold tracking-tigh text-[#171B26]  sm:text-4xl">
         Notary Services
       </h1>

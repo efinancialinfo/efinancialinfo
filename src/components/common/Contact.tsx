@@ -1,77 +1,108 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, ChevronDown } from 'lucide-react'
+import { useState } from "react";
+import { Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    services: 'consulting',
-    message: ''
-  })
+    fullName: "",
+    email: "",
+    phone: "",
+    services: "consulting",
+    message: "",
+  });
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleServiceSelect = (service: string) => {
-    setFormData(prev => ({ ...prev, services: service }))
-    setIsDropdownOpen(false)
-  }
+    setFormData((prev) => ({ ...prev, services: service }));
+    setIsDropdownOpen(false);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-  }
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
 
   const serviceOptions = [
-    { value: 'consulting', label: 'Consulting' },
-    { value: 'development', label: 'Development' },
-    { value: 'design', label: 'Design' },
-    { value: 'marketing', label: 'Marketing' }
-  ]
+    { value: "consulting", label: "Consulting" },
+    { value: "development", label: "Development" },
+    { value: "design", label: "Design" },
+    { value: "marketing", label: "Marketing" },
+  ];
 
   return (
     <main className="flex justify-center items-center min-h-screen px-4 py-12 bg-gray-50">
       <div className="grid md:grid-cols-2 w-full max-w-6xl gap-6">
         {/* Left Info */}
         <div className="p-6 md:p-10">
-          <h2 className="text-2xl font-semibold text-[#224334] mb-8">Call or Visit Us</h2>
+          <h2 className="text-2xl font-semibold text-[#224334] mb-8">
+            Call or Visit Us
+          </h2>
           <ul className="space-y-6 text-gray-700 text-sm">
             <li className="flex items-start gap-3">
               <Phone className="text-green-600 w-5 h-5 mt-1" />
               <div>
                 <p className="mb-1">Phone:-</p>
-                <p className="font-semibold">(705) 555-0124</p>
+                <Link
+                  href="tel:+3219995639"
+                  className="font-semibold hover:underline"
+                >
+                  +321-999-5639
+                </Link>
               </div>
             </li>
             <li className="flex items-start gap-3">
               <Mail className="text-green-600 w-5 h-5 mt-1" />
               <div>
                 <p className="mb-1">Email:-</p>
-                <p className="font-semibold">info.Co.@gmail.com</p>
+                <Link
+                  href="support@efinancial.info"
+                  className="font-semibold hover:underline"
+                >
+                  support@efinancial.info
+                </Link>
               </div>
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="text-green-600 w-5 h-5 mt-1" />
               <div>
                 <p className="mb-1">Location:-</p>
-                <p className="font-semibold">10 3rd Avenue Houghton Estate</p>
+                <Link
+                  href="https://www.google.com/maps/search/?api=1&query=775+S+Kirkman+Rd+Ste+105,+Orlando,+FL+32811"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline font-semibold"
+                >
+                  775 S Kirkman Rd Ste 105, Orlando, FL 32811
+                </Link>
               </div>
             </li>
             <li className="flex items-start gap-3">
               <Clock className="text-green-600 w-5 h-5 mt-1" />
-              <div>
-                <p className="mb-1">Open-time:</p>
-                <p className="font-semibold">Monday - Friday: 08:00 - 20:00</p>
-                <p className="font-semibold">Saturday - Sunday: 10:00 - 18:00</p>
+              <div className="max-w-sm">
+                <h3 className="mb-1">Open Time</h3>
+                <ul className="space-y-1 text-gray-700">
+                  <li>
+                    <span className="font-semibold">Monday - Friday:</span>{" "}
+                    08:00 - 20:00
+                  </li>
+                  <li>
+                    <span className="font-semibold">Saturday:</span> 10:00 -
+                    18:00
+                  </li>
+                  <li>
+                    <span className="font-semibold">Sunday:</span> Holiday
+                  </li>
+                </ul>
               </div>
             </li>
           </ul>
@@ -79,11 +110,15 @@ export default function ContactPage() {
 
         {/* Right Form */}
         <div className="bg-[#F2F5F3] p-6 md:p-10 rounded-2xl shadow-sm">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">Reach Out by Email</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+            Reach Out by Email
+          </h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Full Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name
+              </label>
               <input
                 type="text"
                 name="fullName"
@@ -98,7 +133,9 @@ export default function ContactPage() {
             {/* Email & Phone */}
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -110,7 +147,9 @@ export default function ContactPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone no</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone no
+                </label>
                 <input
                   type="tel"
                   name="phone"
@@ -124,7 +163,9 @@ export default function ContactPage() {
 
             {/* Dropdown */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Services</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Services
+              </label>
               <div className="relative">
                 <button
                   type="button"
@@ -132,17 +173,21 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 bg-white border border-gray-300 rounded-2xl flex justify-between items-center focus:ring-2 focus:ring-green-500 outline-none"
                 >
                   <span className="capitalize">
-                    {serviceOptions.find(opt => opt.value === formData.services)?.label}
+                    {
+                      serviceOptions.find(
+                        (opt) => opt.value === formData.services
+                      )?.label
+                    }
                   </span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
-                      isDropdownOpen ? 'rotate-180' : ''
+                      isDropdownOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
                 {isDropdownOpen && (
                   <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-300 rounded-xl shadow-md overflow-hidden">
-                    {serviceOptions.map(option => (
+                    {serviceOptions.map((option) => (
                       <li key={option.value}>
                         <button
                           type="button"
@@ -160,7 +205,9 @@ export default function ContactPage() {
 
             {/* Message */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Message
+              </label>
               <textarea
                 name="message"
                 rows={4}
@@ -181,5 +228,5 @@ export default function ContactPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }
