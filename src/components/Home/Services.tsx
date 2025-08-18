@@ -1,23 +1,31 @@
+"use client";
 import Image from "next/image";
 import taxImg from "@/assets/home/tax-preparation.png";
 import notaryImg from "@/assets/home/notary-service.png";
 import businessImg from "@/assets/home/business-filing.png";
 import consultingImg from "@/assets/home/business-consult.png";
+import { useRouter } from "next/navigation";
 
 const services = [
   {
     title: <>Individual & Business Filling</>,
     description: <>Accurate filing to maximize your refund and savings</>,
     image: taxImg,
+    url: "/tax-preparation",
     active: false,
   },
   {
-    title: <>Real <br /> Estate</>,
+    title: (
+      <>
+        Real <br /> Estate
+      </>
+    ),
     description: <>Guiding you through every step of buying or selling</>,
     image: businessImg,
+    url: "/real-state-service",
     active: false,
   },
-   {
+  {
     title: "Strategy & IT Consulting",
     description: (
       <>
@@ -25,6 +33,7 @@ const services = [
       </>
     ),
     image: consultingImg,
+    url: "/consulting",
     active: false,
   },
   {
@@ -35,13 +44,13 @@ const services = [
     ),
     description: <>Certified notary services with flexible options</>,
     image: notaryImg,
+    url: "/book-appointment",
     active: true,
   },
-  
- 
 ];
 
 const Services = () => {
+  const router = useRouter();
   return (
     <section className="bg-[var(--softColor)] py-12 container hover:text-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,6 +89,9 @@ const Services = () => {
               </div>
 
               <button
+                onClick={() => {
+                  router.push(service.url);
+                }}
                 className="
                 mt-3
  border px-4 py-2 rounded-full text-sm font-medium 

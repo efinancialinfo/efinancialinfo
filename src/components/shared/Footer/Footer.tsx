@@ -27,7 +27,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about-us", label: "About Us" },
   { href: "#", label: "Services" },
-  { href: "/bookings", label: "Booking" },
+  { href: "/book-appointment", label: "Booking" },
 ];
 const infoLinks = [
   { href: "/faq", label: "FAQ’s" },
