@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ChevronDown, Check } from "lucide-react";
 import Link from "next/link";
 
 export default function ContactPage() {
@@ -14,6 +14,15 @@ export default function ContactPage() {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const serviceOptions = [
+    { value: "consulting", label: "Consulting" },
+    { value: "development", label: "Development" },
+    { value: "design", label: "Design" },
+    { value: "marketing", label: "Marketing" },
+  ];
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,17 +36,38 @@ export default function ContactPage() {
     setIsDropdownOpen(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+    setLoading(true);
+    setSuccess(null);
 
-  const serviceOptions = [
-    { value: "consulting", label: "Consulting" },
-    { value: "development", label: "Development" },
-    { value: "design", label: "Design" },
-    { value: "marketing", label: "Marketing" },
-  ];
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setSuccess("Email sent successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          services: "consulting",
+          message: "",
+        });
+      } else {
+        setSuccess("Failed to send email. Try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setSuccess("Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className="flex justify-center items-center min-h-screen px-4 py-12 bg-gray-50">
@@ -51,7 +81,7 @@ export default function ContactPage() {
             <li className="flex items-start gap-3">
               <Phone className="text-green-600 w-5 h-5 mt-1" />
               <div>
-                <p className="mb-1">Phone:-</p>
+                <p className="mb-1">Phone:</p>
                 <Link
                   href="tel:+3219995639"
                   className="font-semibold hover:underline"
@@ -63,9 +93,9 @@ export default function ContactPage() {
             <li className="flex items-start gap-3">
               <Mail className="text-green-600 w-5 h-5 mt-1" />
               <div>
-                <p className="mb-1">Email:-</p>
+                <p className="mb-1">Email:</p>
                 <Link
-                  href="support@efinancial.info"
+                  href="mailto:support@efinancial.info"
                   className="font-semibold hover:underline"
                 >
                   support@efinancial.info
@@ -75,7 +105,7 @@ export default function ContactPage() {
             <li className="flex items-start gap-3">
               <MapPin className="text-green-600 w-5 h-5 mt-1" />
               <div>
-                <p className="mb-1">Location:-</p>
+                <p className="mb-1">Location:</p>
                 <Link
                   href="https://www.google.com/maps/search/?api=1&query=775+S+Kirkman+Rd+Ste+105,+Orlando,+FL+32811"
                   target="_blank"
@@ -173,11 +203,9 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 bg-white border border-gray-300 rounded-2xl flex justify-between items-center focus:ring-2 focus:ring-green-500 outline-none"
                 >
                   <span className="capitalize">
-                    {
-                      serviceOptions.find(
-                        (opt) => opt.value === formData.services
-                      )?.label
-                    }
+                    {serviceOptions.find(
+                      (opt) => opt.value === formData.services
+                    )?.label}
                   </span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
@@ -192,9 +220,16 @@ export default function ContactPage() {
                         <button
                           type="button"
                           onClick={() => handleServiceSelect(option.value)}
-                          className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                          className={`flex items-center w-full px-4 py-2 text-left hover:bg-gray-100 ${
+                            formData.services === option.value
+                              ? "bg-gray-200"
+                              : ""
+                          }`}
                         >
-                          {option.label}
+                          <span className="flex-1">{option.label}</span>
+                          {formData.services === option.value && (
+                            <Check className="w-4 h-4 text-green-600" />
+                          )}
                         </button>
                       </li>
                     ))}
@@ -218,11 +253,22 @@ export default function ContactPage() {
               />
             </div>
 
+            {success && (
+              <p
+                className={`text-sm ${
+                  success.includes("success") ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {success}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-6 rounded-2xl transition"
+              disabled={loading}
+              className="bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-6 rounded-2xl transition disabled:opacity-50"
             >
-              Submit Now
+              {loading ? "Sending..." : "Submit Now"}
             </button>
           </form>
         </div>

@@ -8,14 +8,10 @@ import support3 from "@/assets/tax-preparation/support3.png";
 import icon1 from "@/assets/tax-preparation/file 1.png";
 import icon2 from "@/assets/tax-preparation/taxation 1.png";
 import icon3 from "@/assets/tax-preparation/refund 1.png";
+import { toast } from "sonner";
 
 type Card =
-  | {
-      type: "image";
-      image: StaticImageData;
-      alt: string;
-      bg: string;
-    }
+  | { type: "image"; image: StaticImageData; alt: string; bg: string }
   | {
       type: "text";
       icon: StaticImageData;
@@ -28,7 +24,8 @@ type Card =
 
 const TaxPreparation = () => {
   const [showModal, setShowModal] = useState(false);
-  const [isAmend, setIsAmend] = useState<boolean | null>(null); // null = not selected yet
+  const [isAmend, setIsAmend] = useState<boolean | null>(null);
+  const [selectedService, setSelectedService] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -40,6 +37,7 @@ const TaxPreparation = () => {
   const toggleModal = () => {
     setShowModal(!showModal);
     setIsAmend(null);
+    setSelectedService("");
     setFormData({
       firstName: "",
       lastName: "",
@@ -49,7 +47,8 @@ const TaxPreparation = () => {
     });
   };
 
-  const handleAmendClick = () => {
+  const handleAmendClick = (service: string) => {
+    setSelectedService(service);
     setShowModal(true);
   };
 
@@ -57,10 +56,30 @@ const TaxPreparation = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
-    console.log("Form Data Submitted:", formData, "Amendment?", isAmend);
-    // Here, send data to backend (e.g., TaxAmend table)
-    toggleModal();
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch("/api/send-tax-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          isAmend,
+          service: selectedService,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        toast.success("Form submitted successfully!");
+        toggleModal();
+      } else {
+        toast.error("Failed to submit form. Check console for errors.");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("An error occurred while submitting the form.");
+    }
   };
 
   const cards: Card[] = [
@@ -91,7 +110,7 @@ const TaxPreparation = () => {
       description:
         "File Now or Finalize Late/Extension Returns — EFinancial Can Help!",
       buttonText: "Start Filing Now",
-      bg: "bg-[var(--third-color)]", 
+      bg: "bg-[var(--third-color)]",
       link: "https://form.jotform.com/250037230428144",
     },
     {
@@ -118,10 +137,10 @@ const TaxPreparation = () => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-        {cards?.map((card, index) => (
+        {cards.map((card, index) => (
           <div
             key={index}
-            className={`${card.bg} rounded-2xl overflow-hidden shadow-lg transition-all duration-300 flex flex-col ease-[cubic-bezier(0.4,0,0.2,1)] 
+            className={`${card.bg} rounded-2xl overflow-hidden shadow-lg transition-all duration-300 flex flex-col ease-[cubic-bezier(0.4,0,0.2,1)]
             hover:shadow-xl hover:scale-[1.015] hover:-translate-y-1 transform h-[280px] relative`}
           >
             {card.type === "image" ? (
@@ -156,9 +175,9 @@ const TaxPreparation = () => {
                   className="mt-6 text-center w-full md:w-auto bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-800 hover:shadow-md hover:scale-[1.03]"
                   onClick={() => {
                     if (card.title === "File a Tax Amendment") {
-                      handleAmendClick();
+                      handleAmendClick(card.buttonText);
                     } else if (card.link) {
-                      window.open(card.link, "_blank"); // open link in new tab
+                      window.open(card.link, "_blank");
                     }
                   }}
                 >
@@ -194,67 +213,24 @@ const TaxPreparation = () => {
                   </button>
                 </div>
               </>
-            ) : isAmend ? (
-              <>
-                <h2 className="text-lg font-semibold mb-4">
-                  Amendment Details
-                </h2>
-                <input
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
-                  className="w-full mb-2 p-2 border rounded"
-                />
-                <input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  className="w-full mb-2 p-2 border rounded"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full mb-2 p-2 border rounded"
-                />
-                <input
-                  type="text"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full mb-2 p-2 border rounded"
-                />
-                <input
-                  type="text"
-                  name="taxYear"
-                  placeholder="Tax Year"
-                  value={formData.taxYear}
-                  onChange={handleInputChange}
-                  className="w-full mb-4 p-2 border rounded"
-                />
-                <button
-                  onClick={handleSubmit}
-                  className="w-full bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700"
-                >
-                  Submit
-                </button>
-              </>
             ) : (
               <>
-                <p className="mb-4">
-                  We don’t amend third-party returns. However, we can review
-                  your situation and recommend next steps.
-                </p>
-                <h2 className="text-lg font-semibold mb-4">
-                  Schedule a Consultation
-                </h2>
+                {isAmend ? (
+                  <h2 className="text-lg font-semibold mb-4">
+                    Amendment Details
+                  </h2>
+                ) : (
+                  <>
+                    <p className="mb-4">
+                      We don’t amend third-party returns. However, we can review
+                      your situation and recommend next steps.
+                    </p>
+                    <h2 className="text-lg font-semibold mb-4">
+                      Schedule a Consultation
+                    </h2>
+                  </>
+                )}
+
                 <input
                   type="text"
                   name="firstName"
@@ -297,7 +273,18 @@ const TaxPreparation = () => {
                 />
                 <button
                   onClick={handleSubmit}
-                  className="w-full bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700"
+                  disabled={
+                    !formData.firstName ||
+                    !formData.lastName ||
+                    !formData.email ||
+                    !formData.phone ||
+                    !formData.taxYear
+                  }
+                  className={`w-full px-4 py-2 rounded ${
+                    !formData.firstName
+                      ? "bg-gray-400"
+                      : "bg-green-800 text-white hover:bg-green-700"
+                  }`}
                 >
                   Submit
                 </button>
