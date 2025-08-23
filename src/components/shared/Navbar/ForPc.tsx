@@ -59,28 +59,27 @@ export default function Navbar() {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <nav className="fixed top-0 z-50 w-full bg-white shadow">
+    <nav className="fixed top-0 z-50 w-full py-5 bg-white shadow">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-4 md:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center w-16 sm:w-20 md:w-24" aria-label="Go to homepage">
           <Image
             src={logo}
             alt="Logo"
-            width={140}
-            height={80}
-            className="h-8 w-auto sm:h-10 md:h-12"
+            width={200}
+            height={100}
+            className="h-10 w-auto sm:h-14 md:h-16"
             priority
           />
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav - Reordered to put Other Services before About Us */}
         <div className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6">
           {[
             { href: "/", label: "Home" },
             { href: "/tax-preparation", label: "Tax Preparation" },
-            { href: "/real-state-service", label: "Real Estate" },
-            { href: "/consulting", label: "Consulting" },
-            { href: "/about-us", label: "About Us" },
+            { href: "/real-state-service", label: "Real Estate Services" },
+            { href: "/consulting", label: "Consulting Services" },
           ].map(({ href, label }) => (
             <Link
               key={href}
@@ -98,7 +97,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {/* Other Services Dropdown */}
+          {/* Other Services Dropdown - Moved before About Us */}
           <div
             ref={dropdownRef}
             className="relative"
@@ -136,6 +135,21 @@ export default function Navbar() {
               </ul>
             )}
           </div>
+
+          {/* About Us - Moved after Other Services */}
+          <Link
+            href="/about-us"
+            className={`text-sm lg:text-base font-medium transition-colors relative py-2 px-2 lg:px-3 rounded-md ${
+              isActive("/about-us")
+                ? "text-emerald-700 bg-emerald-50"
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+            }`}
+          >
+            About Us
+            {isActive("/about-us") && (
+              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+            )}
+          </Link>
         </div>
 
         {/* Desktop CTA */}
