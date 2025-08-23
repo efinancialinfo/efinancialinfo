@@ -7,7 +7,6 @@ export default function Home() {
     <div className="mx-auto">
       <Hero />
       <Services />
-
       <Testimonials />
     </div>
   );

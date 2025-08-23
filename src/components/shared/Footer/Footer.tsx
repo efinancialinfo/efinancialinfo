@@ -25,15 +25,15 @@ const socialIcons = [
 ];
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about-us", label: "About Us" },
-  { href: "#", label: "Services" },
+  { href: "/#services", label: "Services" },
+  { href: "/career", label: "Career" },
   { href: "/book-appointment", label: "Booking" },
 ];
 const infoLinks = [
   { href: "/faq", label: "FAQ’s" },
   { href: "/contact-us", label: "Contact" },
-  { href: "#", label: "Privacy Policy" },
-  { href: "#", label: "Terms of Service" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms-service", label: "Terms of Service" },
 ];
 const contactItems = [
   {
@@ -43,7 +43,7 @@ const contactItems = [
     text: (
       <>
         <Link href="tel:+3219995639" className="text-white hover:underline">
-          +321-999-5639
+          1-321-999-5639
         </Link>
       </>
     ),

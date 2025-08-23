@@ -64,48 +64,52 @@ const Hero = () => {
           </div>
 
           {/* Floating button (desktop only) */}
-          <button className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-6 py-3 font-medium transition rounded-full border border-green-800 bg-white font-inter text-base leading-[120%] text-[#182F25] hover:bg-[#182F25] hover:text-white shadow-lg">
-            File My Taxes
-            <span className="flex items-center justify-center w-10 h-10 rounded-full bg-green-800">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 7L7 17M17 7H7m10 0v10"
-                />
-              </svg>
-            </span>
-          </button>
+          <Link href={"https://form.jotform.com/250037230428144"}>
+            <button className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 px-6 py-3 font-medium transition rounded-full border border-green-800 bg-white font-inter text-base leading-[120%] text-[#182F25] hover:bg-[#182F25] hover:text-white shadow-lg">
+              File My Taxes
+              <span className="flex items-center justify-center w-10 h-10 rounded-full bg-green-800">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 7L7 17M17 7H7m10 0v10"
+                  />
+                </svg>
+              </span>
+            </button>
+          </Link>
         </div>
 
         {/* Normal button (Mobile + Tablet only) */}
         <div className="flex justify-center mt-6 w-full lg:hidden">
-          <button className="flex items-center gap-3 px-5 py-2 text-sm font-medium transition rounded-full border border-green-800 bg-green-800 text-white hover:bg-[#182F25] shadow-md">
-            File My Taxes
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-green-800">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17 7L7 17M17 7H7m10 0v10"
-                />
-              </svg>
-            </span>
-          </button>
+          <Link href={"https://form.jotform.com/250037230428144"}>
+            <button className="flex items-center gap-3 px-5 py-2 text-sm font-medium transition rounded-full border border-green-800 bg-green-800 text-white hover:bg-[#182F25] shadow-md">
+              File My Taxes
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-green-800">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 7L7 17M17 7H7m10 0v10"
+                  />
+                </svg>
+              </span>
+            </button>
+          </Link>
         </div>
       </div>
     </section>

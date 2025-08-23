@@ -52,7 +52,7 @@ const services = [
 const Services = () => {
   const router = useRouter();
   return (
-    <section className="bg-[var(--softColor)] py-12 container hover:text-white">
+    <section id="services" className="bg-[var(--softColor)] py-12 container hover:text-white">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title */}
         <h2 className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-12">

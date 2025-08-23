@@ -18,10 +18,12 @@ export default function ContactPage() {
   const [success, setSuccess] = useState<string | null>(null);
 
   const serviceOptions = [
+    { value: "tax-individual", label: "Tax individual" },
+    { value: "tax-business", label: "Tax Business" },
+    { value: "realtor", label: "Realtor" },
+    { value: "loan-officer", label: "Loan officer" },
     { value: "consulting", label: "Consulting" },
-    { value: "development", label: "Development" },
-    { value: "design", label: "Design" },
-    { value: "marketing", label: "Marketing" },
+    { value: "notary", label: "Notary" },
   ];
 
   const handleInputChange = (
@@ -86,7 +88,7 @@ export default function ContactPage() {
                   href="tel:+3219995639"
                   className="font-semibold hover:underline"
                 >
-                  +321-999-5639
+                  1-321-999-5639
                 </Link>
               </div>
             </li>
@@ -123,14 +125,13 @@ export default function ContactPage() {
                 <ul className="space-y-1 text-gray-700">
                   <li>
                     <span className="font-semibold">Monday - Friday:</span>{" "}
-                    08:00 - 20:00
+                    09:00 AM to 07:00 PM
                   </li>
                   <li>
-                    <span className="font-semibold">Saturday:</span> 10:00 -
-                    18:00
+                    <span className="font-semibold">Saturday:</span> 11:00 AM - 05:00 PM
                   </li>
                   <li>
-                    <span className="font-semibold">Sunday:</span> Holiday
+                    <span className="font-semibold">Sunday:</span> Closed
                   </li>
                 </ul>
               </div>
@@ -203,9 +204,11 @@ export default function ContactPage() {
                   className="w-full px-4 py-2 bg-white border border-gray-300 rounded-2xl flex justify-between items-center focus:ring-2 focus:ring-green-500 outline-none"
                 >
                   <span className="capitalize">
-                    {serviceOptions.find(
-                      (opt) => opt.value === formData.services
-                    )?.label}
+                    {
+                      serviceOptions.find(
+                        (opt) => opt.value === formData.services
+                      )?.label
+                    }
                   </span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
@@ -256,7 +259,9 @@ export default function ContactPage() {
             {success && (
               <p
                 className={`text-sm ${
-                  success.includes("success") ? "text-green-600" : "text-red-600"
+                  success.includes("success")
+                    ? "text-green-600"
+                    : "text-red-600"
                 }`}
               >
                 {success}

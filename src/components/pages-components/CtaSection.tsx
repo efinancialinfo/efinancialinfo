@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import bgImage from "@/assets/bg.png"; // your actual image path
+import Link from "next/link";
 
 export default function CtaSection() {
   return (
@@ -25,12 +26,14 @@ export default function CtaSection() {
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               {/* Primary Button */}
+              <Link href={"/book-appointment"}>
               <button className="bg-white cursor-pointer hover:bg-[var(--primary-color)] hover:text-white transition-colors duration-500 text-[var(--primary-color)] px-6 py-3 rounded-full font-medium text-base flex items-center gap-3 shadow-md hover:shadow-lg hover:scale-105 transform-gpu">
                 Schedule a Free Consultation
                 <span className="w-8 h-8 bg-[var(--primary-color)] rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                   <ArrowUpRight className="w-4 h-4 text-white" />
                 </span>
               </button>
+              </Link>
 
               {/* Secondary Button */}
               <button className="bg-white cursor-pointer hover:bg-[var(--primary-color)] hover:text-white transition-colors duration-200 text-[var(--primary-color)] px-6 py-3 rounded-full font-medium text-base flex items-center gap-3 shadow-md hover:shadow-lg hover:scale-105 transform-gpu">

@@ -9,7 +9,7 @@ type AppointmentFormProps = {
 
 export default function AppointmentForm({
   className,
-  calendlyUrl = "https://calendly.com/efinancialtaxes/30min?primary_color=00a86b&text_color=000000",
+  calendlyUrl = "https://calendly.com/efinancialfirm/30min?primary_color=00a86b&text_color=000000",
 }: AppointmentFormProps) {
   const calendlyRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +26,7 @@ export default function AppointmentForm({
   }, []);
 
   return (
-    <section className={className}>
+    <section id="booking" className={className}>
       <div className="mx-auto rounded-2xl bg-[#F1F8F4] px-4 py-10 sm:px-8">
         <h1 className="md:text-5xl text-4xl text-gray-900 leading-[120%] font-bold mb-10 text-center">
           Book an Appointment

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { BsCheckCircleFill } from "react-icons/bs";
 import img from "@/assets/consulting-page/1.png";
+import Link from "next/link";
 
 const BusinessStrategyPlanning = () => {
   return (
@@ -34,9 +35,11 @@ const BusinessStrategyPlanning = () => {
             ))}
           </div>
 
-          <button className="mt-6 hover:bg-white hover:text-green-800 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition">
-            Start With a Discovery Call
-          </button>
+          <Link href={"/book-appointment"}>
+            <button className="mt-6 hover:bg-white hover:text-green-800 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition">
+              Start With a Discovery Call
+            </button>
+          </Link>
         </div>
 
         {/* Right Image */}

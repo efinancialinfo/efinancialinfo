@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { ChevronDown, MenuIcon, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/Efinancial_noSlogan_clear.png";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,7 +13,6 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Lock body scroll when drawer is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "auto";
     return () => {
@@ -21,7 +20,6 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -33,19 +31,14 @@ export default function Navbar() {
     }
     if (dropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownOpen]);
 
-  // Improved active link detection
   const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === href;
-    }
+    if (href === "/") return pathname === href;
     return pathname.startsWith(href);
   };
 
@@ -58,10 +51,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/tax-preparation", label: "Tax Preparation" },
     { href: "/real-state-service", label: "Real Estate Services" },
-    {
-      label: "Other Services",
-      children: otherServicesItems,
-    },
+    { label: "Other Services", children: otherServicesItems },
     { href: "/about-us", label: "About Us" },
     { href: "/contact-us", label: "Contact Us", fontMedium: true },
   ];
@@ -69,78 +59,44 @@ export default function Navbar() {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <nav className="fixed top-0 z-50 py-5 w-full bg-white shadow">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+    <nav className="fixed top-0 z-50 w-full bg-white shadow">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-4 md:px-6">
         {/* Logo */}
-        <Link
-          href="/"
-          className="flex items-center gap-2 w-24"
-          aria-label="Go to homepage"
-        >
+        <Link href="/" className="flex items-center w-16 sm:w-20 md:w-24" aria-label="Go to homepage">
           <Image
             src={logo}
             alt="Logo"
-            width={300}
+            width={140}
             height={80}
-            className="h-20 w-28"
+            className="h-8 w-auto sm:h-10 md:h-12"
             priority
           />
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-4 md:gap-6 lg:gap-8 xl:gap-10 md:flex">
-          <Link
-            href="/"
-            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
-              isActive("/")
-                ? "text-emerald-700 bg-emerald-50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            }`}
-          >
-            Home
-            {isActive("/") && (
-              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
-            )}
-          </Link>
-          <Link
-            href="/tax-preparation"
-            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
-              isActive("/tax-preparation")
-                ? "text-emerald-700 bg-emerald-50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            }`}
-          >
-            Tax Preparation
-            {isActive("/tax-preparation") && (
-              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
-            )}
-          </Link>
-          <Link
-            href="/real-state-service"
-            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
-              isActive("/real-state-service")
-                ? "text-emerald-700 bg-emerald-50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            }`}
-          >
-            Real Estate Services
-            {isActive("/real-state-service") && (
-              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
-            )}
-          </Link>
-          <Link
-            href="/consulting"
-            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
-              isActive("/consulting")
-                ? "text-emerald-700 bg-emerald-50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            }`}
-          >
-            Consulting Services
-            {isActive("/consulting") && (
-              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
-            )}
-          </Link>
+        <div className="hidden md:flex items-center gap-2 lg:gap-4 xl:gap-6">
+          {[
+            { href: "/", label: "Home" },
+            { href: "/tax-preparation", label: "Tax Preparation" },
+            { href: "/real-state-service", label: "Real Estate" },
+            { href: "/consulting", label: "Consulting" },
+            { href: "/about-us", label: "About Us" },
+          ].map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`text-sm lg:text-base font-medium transition-colors relative py-2 px-2 lg:px-3 rounded-md ${
+                isActive(href)
+                  ? "text-emerald-700 bg-emerald-50"
+                  : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              }`}
+            >
+              {label}
+              {isActive(href) && (
+                <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
+              )}
+            </Link>
+          ))}
 
           {/* Other Services Dropdown */}
           <div
@@ -151,37 +107,27 @@ export default function Navbar() {
           >
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className={`flex items-center gap-1 font-semibold transition-colors relative py-2 px-3 rounded-md ${
-               
-                isActive("/book-appointment") ||
-                isActive("/service-3")
+              className={`flex items-center gap-1 text-sm lg:text-base font-medium transition-colors relative py-2 px-2 lg:px-3 rounded-md ${
+                isActive("/book-appointment") || isActive("/faq")
                   ? "text-emerald-700 bg-emerald-50"
                   : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
               }`}
-              aria-haspopup="menu"
-              aria-expanded={dropdownOpen}
             >
               Other
-              <ChevronDown className="h-4 w-4" aria-hidden="true" />
-              {(isActive("/consulting") ||
-                isActive("/book-appointment") ||
-                isActive("/service-3")) && (
-                <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
-              )}
+              <ChevronDown className="h-3 w-3 lg:h-4 lg:w-4" />
             </button>
-
             {dropdownOpen && (
-              <ul className="absolute top-full mt-1 w-48 rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50">
+              <ul className="absolute top-full mt-1 w-44 rounded bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50">
                 {otherServicesItems.map(({ href, label }) => (
                   <li key={href}>
                     <Link
                       href={href}
-                      className={`block px-4 py-2 ${
+                      onClick={() => setDropdownOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
                         isActive(href)
                           ? "bg-emerald-50 text-emerald-700"
                           : "text-gray-700 hover:bg-emerald-50 hover:text-emerald-700"
                       }`}
-                      onClick={() => setDropdownOpen(false)}
                     >
                       {label}
                     </Link>
@@ -190,20 +136,6 @@ export default function Navbar() {
               </ul>
             )}
           </div>
-
-          <Link
-            href="/about-us"
-            className={`font-semibold transition-colors relative py-2 px-3 rounded-md ${
-              isActive("/about-us")
-                ? "text-emerald-700 bg-emerald-50"
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-50"
-            }`}
-          >
-            About Us
-            {isActive("/about-us") && (
-              <span className="absolute inset-x-1 -bottom-1 h-0.5 bg-emerald-500 rounded-full" />
-            )}
-          </Link>
         </div>
 
         {/* Desktop CTA */}
@@ -211,11 +143,7 @@ export default function Navbar() {
           <Link href="/contact-us">
             <button
               type="button"
-              className={`hover:bg-white px-6 py-3 rounded-full font-medium border-2 transition ${
-                isActive("/contact-us")
-                  ? "bg-emerald-800 text-white border-emerald-800 hover:text-emerald-800"
-                  : "bg-emerald-800 text-white border-emerald-800 hover:text-emerald-800"
-              }`}
+              className="px-3 py-1.5 lg:px-4 lg:py-2 text-sm lg:text-base rounded-full font-medium border-2 bg-emerald-800 text-white border-emerald-800 hover:bg-white hover:text-emerald-800 transition"
             >
               Contact Us
             </button>
@@ -227,44 +155,30 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(true)}
             aria-label="Open Menu"
-            className="rounded p-2 ring-emerald-600 transition focus:outline-none focus:ring-2"
+            className="rounded p-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
           >
-            <MenuIcon className="h-6 w-6" aria-hidden="true" />
+            <MenuIcon className="h-6 w-6" />
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {/* Overlay */}
+      {/* Mobile Overlay */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-30 transition-opacity ${
-          mobileOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={closeMobile}
       />
 
-      {/* Drawer panel */}
+      {/* Drawer */}
       <aside
-        className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl transform transition-transform ${
+        className={`fixed top-0 right-0 h-full w-72 sm:w-80 bg-white shadow-xl transform transition-transform ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         } flex flex-col`}
-        aria-label="Mobile menu"
       >
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <Link
-            href="/"
-            onClick={closeMobile}
-            className="flex items-center gap-2"
-          >
-            <Image
-              src={logo}
-              alt="Logo"
-              width={200}
-              height={140}
-              className="h-8 w-auto"
-            />
+          <Link href="/" onClick={closeMobile} className="flex items-center gap-2">
+            <Image src={logo} alt="Logo" width={140} height={80} className="h-8 w-auto" />
             <span className="sr-only">Home</span>
           </Link>
           <button
