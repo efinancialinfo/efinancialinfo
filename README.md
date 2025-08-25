@@ -117,11 +117,19 @@ Each feature (like auth, booking, etc.) has its own directory containing all rel
 
 Create a .env file in the root directory and add the following:
 
+<<<<<<< HEAD
 - `SMTP_HOST=your_smtp_host`
 - `SMTP_PORT=your_smtp_port`
 - `SMTP_USER=your_smtp_user`
 - `SMTP_PASS=your_smtp_password`
 - `ADMIN_EMAIL=your_admin_email`
+=======
+SMTP_HOST=your_smtp_host //
+SMTP_PORT=your_smtp_port //
+SMTP_USER=your_smtp_user //
+SMTP_PASS=your_smtp_password //
+ADMIN_EMAIL=your_admin_email //
+>>>>>>> ee6571fcc8ca80ad301eebb7d6f59daaec523c74
 
 These are used for email functionality in API routes.
 
