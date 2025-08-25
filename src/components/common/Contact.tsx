@@ -60,11 +60,9 @@ export default function ContactPage() {
           services: "consulting",
           message: "",
         });
-      } else {
-        setSuccess("Failed to send email. Try again.");
       }
     } catch (err) {
-      console.error(err);
+      console.log(err);
       setSuccess("Something went wrong. Try again.");
     } finally {
       setLoading(false);
