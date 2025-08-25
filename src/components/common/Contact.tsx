@@ -124,11 +124,28 @@ export default function ContactPage() {
                 <h3 className="mb-1">Open Time</h3>
                 <ul className="space-y-1 text-gray-700">
                   <li>
-                    <span className="font-semibold">Monday - Friday:</span>{" "}
-                    09:00 AM to 07:00 PM
+                    <span className="font-semibold">Monday: </span> 09:00 AM to
+                    07:00 PM
                   </li>
                   <li>
-                    <span className="font-semibold">Saturday:</span> 11:00 AM - 05:00 PM
+                    <span className="font-semibold">Tuesday:</span> 09:00 AM to
+                    07:00 PM
+                  </li>
+                  <li>
+                    <span className="font-semibold">Wednesday:</span> 09:00 AM
+                    to 07:00 PM
+                  </li>
+                  <li>
+                    <span className="font-semibold">Thursday:</span> 09:00 AM to
+                    07:00 PM
+                  </li>
+                  <li>
+                    <span className="font-semibold">Friday:</span> 09:00 AM to
+                    07:00 PM
+                  </li>
+                  <li>
+                    <span className="font-semibold">Saturday:</span> 11:00 AM -
+                    05:00 PM
                   </li>
                   <li>
                     <span className="font-semibold">Sunday:</span> Closed
@@ -179,7 +196,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone no
+                  Phone Number
                 </label>
                 <input
                   type="tel"
