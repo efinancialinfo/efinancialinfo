@@ -64,11 +64,11 @@ You can start editing the page by modifying src/app/(common)/page.tsx. The page 
 
 Create a .env file in the root directory and add the following:
 
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-SMTP_USER=your_smtp_user
-SMTP_PASS=your_smtp_password
-ADMIN_EMAIL=your_admin_email
+SMTP_HOST=your_smtp_host //
+SMTP_PORT=your_smtp_port //
+SMTP_USER=your_smtp_user //
+SMTP_PASS=your_smtp_password //
+ADMIN_EMAIL=your_admin_email //
 
 These are used for email functionality in API routes.
 
