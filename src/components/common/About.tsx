@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Img from "@/assets/Group.png";
+import Link from "next/link";
 
 export default function Component() {
   return (
@@ -15,25 +16,28 @@ export default function Component() {
 
             <div className="space-y-4 text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
               <p>
-                To simplify the financial lives of our clients by delivering expert, 
-                transparent, and supportive services tailored to their individual 
-                and business needs.
+                To simplify the financial lives of our clients by delivering
+                expert, transparent, and supportive services tailored to their
+                individual and business needs.
               </p>
 
               <p>
-                With a focus on tax preparation, notary services, business filings, 
-                and small business consulting, we provide the tools, expertise, 
-                and support you need to make confident financial and business 
-                decisions — all in one place.
+                With a focus on tax preparation, notary services, business
+                filings, and small business consulting, we provide the tools,
+                expertise, and support you need to make confident financial and
+                business decisions — all in one place.
               </p>
             </div>
 
-            <button
-              aria-label="Get started with our services"
-              className="mt-6 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition hover:bg-white hover:text-green-800 hover:shadow-lg"
-            >
-              Get Started
-            </button>
+            {/* Updated button */}
+            <Link href="/#services" scroll={true}>
+              <button
+                aria-label="Get started with our services"
+                className="mt-6 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition hover:bg-white hover:text-green-800 hover:shadow-lg"
+              >
+                Get Started
+              </button>
+            </Link>
           </div>
 
           {/* Image with hover effect */}
