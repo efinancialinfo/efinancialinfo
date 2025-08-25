@@ -25,9 +25,9 @@ const socialIcons = [
 ];
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/about-us", label: "About Us" },
   { href: "/#services", label: "Services" },
-  { href: "/career", label: "Career" },
-  { href: "/book-appointment", label: "Booking" },
+  { href: "/career", label: "Careers" },
 ];
 const infoLinks = [
   { href: "/faq", label: "FAQ’s" },
