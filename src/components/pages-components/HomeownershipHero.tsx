@@ -4,6 +4,7 @@ import Image from "next/image";
 import img1 from "@/assets/real-estate/tr2.png";
 import img2 from "@/assets/real-estate/tr1.png";
 import { BsCheckCircleFill } from "react-icons/bs";
+import Link from "next/link";
 
 const HomeOwnershipHero = () => {
   return (
@@ -27,13 +28,15 @@ const HomeOwnershipHero = () => {
 
             <p className="text-[15px] sm:text-[16px] md:text-[18px] text-[#585C67] mt-4 md:mt-6 leading-relaxed">
               Whether you need a trusted realtor or expert guidance as a loan
-              officer, we&apos;re here to help you find — and finance — your dream
-              home.
+              officer, we&apos;re here to help you find — and finance — your
+              dream home.
             </p>
 
-            <button className="w-full sm:w-fit mt-6 md:mt-9 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-800">
-              Talk to a Realtor
-            </button>
+            <Link href={"/book-appointment"}>
+              <button className="w-full sm:w-fit mt-6 md:mt-9 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-800">
+                Talk to a Realtor
+              </button>
+            </Link>
           </div>
         </div>
 
@@ -67,9 +70,11 @@ const HomeOwnershipHero = () => {
               ))}
             </div>
 
-            <button className="w-full sm:w-fit mt-6 md:mt-9 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-800">
-              Talk to a Loan Officer
-            </button>
+            <Link href={"/book-appointment"}>
+              <button className="w-full sm:w-fit mt-6 md:mt-9 bg-green-800 text-white px-6 py-3 rounded-full font-medium border-2 border-green-800 transition-all duration-300 ease-in-out hover:bg-white hover:text-green-800">
+                Talk to a Loan Officer
+              </button>
+            </Link>
           </div>
         </div>
       </div>
